@@ -729,7 +729,74 @@
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Cross Procut in $\RR^3$}
+\begin{frame}
+Rewrite linear mappings as matrices:
+  \begin{itemize}
+    \item Example 1
+    $$f
+    \begin{bmatrix}
+      x\\y\\z
+    \end{bmatrix}
+    = \begin{bmatrix}
+      3x -2y + z\\
+      z -3y
+    \end{bmatrix} =  
+    \begin{bmatrix}
+      3\times x + (-2)\times y + 1\times z\\
+      0\times x + (-3)\times y + 1\times z
+    \end{bmatrix}
+    =\udesc{\text{matrix of }f}{
+    \begin{bmatrix}
+      3 & -2 & 1\\
+      0 & -3 & 1
+    \end{bmatrix}}\begin{bmatrix}
+      x\\y\\z
+    \end{bmatrix}
+    $$
+    \begin{itemize}
+      \item Dimension of the input vector = number of columns
+      \item Dimension of the output vector = number of lines
+    \end{itemize}
+  \item Example 2
+  $$
+  f\begin{bmatrix}
+      x\\y\\z
+    \end{bmatrix} = 3z - 2x + y = ((-2)x + 1y + 3z) = 
+    \udesc{\text{matrix of }f}{
+    \begin{bmatrix}
+      -2 & 1 & 3
+    \end{bmatrix}} \begin{bmatrix}
+      x\\y\\z
+    \end{bmatrix}
+    $$
+    \begin{itemize}
+      \item output of $f$ is a single real, the same as a 1D vector. 
+      \item When the output of $f$ is a single real, $f$ is called a \emph{linear form}.
+    \end{itemize}
+  \item Example 3
+    $$
+    f(t) = \begin{bmatrix}
+      3t\\
+      -11t
+    \end{bmatrix}
+    = \begin{bmatrix}
+      (3)t\\
+      (-11)t
+    \end{bmatrix}=
+    \begin{bmatrix}
+      3\\-11
+    \end{bmatrix}[t] = t\begin{bmatrix}
+      3\\-11
+    \end{bmatrix}
+  $$
+    \begin{itemize}
+      \item[\raisebox{2mm}\dbend] scalar-vector multiplication is linear, its matrix is the vector itself.
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}{Cross Product in $\RR^3$}
   \begin{itemize}
   \item Remember: $\bv,\bw\mapsto \bv\times \bw$\vfill
   \item The cross - product is linear for each term:
