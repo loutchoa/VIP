@@ -1,0 +1,26 @@
+Antal deltagere: 7 (heraf 1 it&cognition, 6 dataloger)
+
+
+Statements:
+
+- Assignments: Hard to know when results were good enough - a good enough solution. (6 votes).
+Comments: May be add examples in the assignment text on what output is expected. Also add suggestions for parameter ranges. CBIR assignment requires to much computation time.
+
+- Lectures good and assignment subjects. (6 votes).
+Comments: Nice with application examples and the algorithms were fairly clearly explained.
+
+- TA session: TA is too passive. (6 votes).
+Comments: It would be nice if he gave some examples of the different parameters settings. More comments for our solutions to the assignment. Also general feedback on common mistakes in the solutions.
+
+- Amount of assignments ok (5 votes).
+Comments: Mini-projects? Maybe but they like it as it is now.
+
+- Assignment text were sometime unclear and obscure (5 votes).
+Comments: Assignment 3 text could do with an overhaul
+
+- Good that it was ok to use libraries (4 votes).
+
+- Assignment: It would be nice to get some examples of correct solutions including code.
+
+- Great that lectures and class are in the afternoon.
+

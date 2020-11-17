@@ -1,0 +1,99 @@
+\documentclass[10pt]{beamer}
+
+\mode<presentation> 
+{
+  \usetheme{Diku}
+  \beamertemplatenavigationsymbolsempty
+  \setbeamercovered{invisible}
+%  \setbeamercovered{transparent}
+}
+
+
+% { \usetheme[nat,dogma]{Frederiksberg} }
+%{ \usetheme[nat]{Frederiksberg} }
+
+% \usepackage[danish]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage{times,pslatex}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{hyperref}
+
+\usepackage{multimedia}
+\usepackage{francois-preamble}
+\usepackage{multirow}
+% \usepackage{multimedia}
+
+
+\newcommand{\cc}{{c\!\!,}}
+\newcommand{\degr}[1]{{{#1}^\circ}}
+\DeclareMathOperator{\idf}{idf}
+
+\title{Evaluation}
+
+\author[S. Olsen] % (optional, use only with lots of authors)
+{Søren I. Olsen}
+% Copied from Francois Lauze
+
+\institute[DIKU] % (optional, but mostly needed)
+{
+  Department of Computer Science\\
+  University of Copenhagen
+}
+
+\date[2016 B2] % (optional, should be abbreviation of conference name)
+% {Research Presentation, Diku 2006}
+
+% Insert page numbers
+\pagenumbering{arabic}
+\setbeamertemplate{footline}{\hspace{5pt}\insertpagenumber\vspace{10pt}}
+
+\definecolor{gold}{rgb}{0.95,0.83,0.0}
+\definecolor{orange}{rgb}{0.95,0.7,0.0}
+% \definecolor{backblue}{rgb}{0.93,0.94,0.99}
+\definecolor{backblue}{rgb}{0.95,0.94,0.99}
+\setbeamercolor*{background canvas}{bg=backblue} 
+
+
+
+\newcommand{\myemph}[1]{{\color{blue}{#1}}}
+\newcommand{\intrg}[1]{\int_{{#1}=-\infty}^\infty}
+\newcommand{\intRR}{\int_{-\infty}^\infty}
+
+\AtBeginSection[]
+{
+  \begin{frame}<beamer>{Outline}
+    \tableofcontents[currentsection,currentsubsection]
+  \end{frame}
+}
+
+
+\begin{document}
+\maketitle
+
+% would be cool with more images showing applications
+
+
+%-------------------------------------------------------------------
+%   Start slides
+%-------------------------------------------------------------------
+
+\begin{frame}
+  \frametitle{VIP evaluation 2015-16}
+  \begin{itemize}
+  \item Did the course live up to the course description?
+  \item Did the course live up to your expectations?
+  \item Did you like the selected topics?
+  \item How was the assignments?
+  \item How was the lectures/exercises?
+  \item Did you get sufficient feedback?
+  \item Should we use the book of Forsyth and Ponce (2ed) more heavily?
+  \item Anything else?
+  \end{itemize}
+  \vspace{5mm}
+
+Now, its your turn
+\end{frame}
+
+
+\end{document}

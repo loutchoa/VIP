@@ -1,0 +1,16 @@
+<?xml version="1.0"?><svg width="640" height="480" xmlns="http://www.w3.org/2000/svg">
+ <!-- Created with SVG-edit - http://svg-edit.googlecode.com/ -->
+ <title>Simple Line Camera</title>
+
+ <g>
+  <title>Layer 1</title>
+  <circle fill="none" stroke="#000000" stroke-width="5" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" cx="376" cy="235" r="93.914856" id="svg_9"/>
+  <rect fill="none" stroke="#000000" stroke-width="5" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x="143" y="78" width="142" height="55" id="svg_8"/>
+  <rect fill="none" stroke="#000000" stroke-width="5" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x="140" y="74" width="368.000002" height="264.999994" id="svg_4"/>
+  <circle fill="none" stroke="#000000" stroke-width="5" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" cx="375.500004" cy="235.500003" r="83.02948" id="svg_3"/>
+  <rect fill="none" stroke="#000000" stroke-width="5" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x="157.000004" y="88" width="112.000007" height="35" id="svg_5"/>
+  <rect fill="none" stroke="#000000" stroke-width="5" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x="392" y="45.999998" width="39" height="28.000002" id="svg_6"/>
+  <rect fill="#000000" stroke="#000000" stroke-width="5" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x="163" y="59" width="60" height="15" id="svg_10"/>
+  <circle fill="#ffffff" stroke="#000000" stroke-width="5" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" cx="453" cy="105" r="10.816654" id="svg_15"/>
+ </g>
+</svg>

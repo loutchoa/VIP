@@ -1,0 +1,248 @@
+\documentclass[a4paper,12pts]{article}
+
+\usepackage[english]{babel}
+\usepackage[latin1]{inputenc}
+%\usepackage[dvips]{graphicx}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{color}
+\usepackage{hyperref}
+
+
+\begin{document}
+
+\title{Assignment 3: Stereo correspondence analysis}
+\author{Kim Steenstrup Pedersen, Søren I. Olsen, and Jan Kremer}
+\date{December 15}
+\maketitle
+
+
+\noindent This third mandatory assignment on the course Vision
+and Image Processing is about implementation of a classical algorithm
+for stereo correspondence analysis. \\[3mm]
+
+You have to pass this and the following mandatory assignments in order
+to pass this course. There are in total 4 mandatory pass/fail
+assignments. This is a \textbf{group assignment}, i.e., we expect that you will
+form small groups of 2 to 4 students that will work on this assignment.
+
+
+The deadline for this assignment is Wednesday, January 7, 2015. You must submit
+your solution electronically via the Absalon home page. Go to the
+assignments list, choose this assignment and upload your solution
+prior to the deadline. Remember to include your name and KU user name
+(login for {KU}net) in the solution. If you do not pass the
+assignment, having made a SERIOUS attempt, you will get a second
+chance of submitting a new solution.
+
+A solution consists of:
+\begin{itemize}
+\item Your solution source code (Matlab / Python scripts / C / C++
+  code) with comments about the major steps involved in each question
+  (see below).
+\item Your code should be structured such that there is one main file
+  that we can run to reproduce all the results presented in your
+  report. This main file can, if you like, call other files with
+  functions / classes.
+\item Your code should also include a README text file describing how
+  to compile (if relevant) and run your program, as well as a list of
+  all relevant libraries needed for compiling or using your code. If
+  we cannot make your code run, we will consider your submission
+  incomplete and you may be asked to resubmit.
+\item The code, auxiliary files and README file should be put into a
+  compressed archive file in either the ZIP or tar format (RAR is not
+  allowed - we simply cannot read your archive).
+\item A PDF file with notes detailing your answers to the questions,
+  which may include graphs and tables if needed ({\bf Max 5 pages}
+  text including figures and tables). Do NOT include your source code
+  in this PDF file.
+\end{itemize}
+
+
+
+\subsection*{A note on relevant software}
+We recommend that you select either Matlab / Python / C / C++ as the programming language
+you use for your solutions for these assignments. We also recommend that you select the
+language you are most confident in - the focus should be on learning the methods and not
+learning a new programming language.
+
+If you wish to use Matlab, the University of Copenhagen has a license agreement with
+MathWorks that allow students to download and install a copy of Matlab on personal
+computers. On the KUnet web site you find a menu item called Software Library
+(Softwarebiblioteket): \\\url{https://intranet.ku.dk/Sider/Software-bibliotek.aspx}. \\
+Under
+this menu item you can find a link to The Mathworks - Matlab \& Simulink +
+toolboxes. Click this link and follow the instructions for how to install on your own
+computer.
+
+If you wish to program your solutions in C++ we recommend the use of
+the CImg Library, which can be obtained at \url{http://cimg.sourceforge.net}
+
+
+
+\section*{Stereo correspondence analysis}
+The goal of this assignment is to implement a traditional edge
+based algorithm for stereo correspondence analysis.  You may assume
+that the stereo image pairs show richly textured piecewise smooth
+surfaces with Lambertian reflectance properties and that the images are
+rectified. 
+\medskip
+
+To maximize the number of features and allow a reconstruction of a
+dense disparity image edge points should be used (SIFT-feature points
+will be far too sparse). You may attribute any descriptor you like to
+the extracted feature points. The simplest choice is just to use the
+gradient orientation. You should try this before using more advanced
+(higher dimensional) descriptors. 
+\medskip
+
+
+The feature point matching may be based solely on the descriptors
+attributed to the feature points. You may find that descriptive
+strength of the edge orientation descriptor is limited (and may not
+always single out the correct matches).  If so, you are welcome to 
+choose another descriptor or to use a more advanced matching
+strategy, eg.: Require consistent two-way matching; accept only
+candidate matches much better than the next best;  accept only
+candidate matches with high support from neighboring matches etc.
+
+
+
+\section{Coarse to fine and prior knowledge}
+To handle numerically large disparities a coarse-to-fine approach
+using  a (truncated) factor-2 pyramid representations of the images
+should be applied. Here, each image in the pyramid is subsampled with
+a factor of 2 (along each dimension) from the next larger image. The
+disparity magnitude will be reduced with the same factor. Thus, the
+disparity will be numerically small at the topmost pyramid level and 
+a small search area (of $\pm M$) will suffice.
+\medskip
+
+Having estimated the disparity at the top pyramid level at the sparse
+edge points we can reconstruct a dense disparity suface using
+interpolation or approximation.  You are advised to apply the
+Thin-Plate-Spline approximation routine {\em interp(.)} available at
+the Absalon course home page. The program is in MATLAB, but I trust
+that you may transform it into your favourite language.
+\medskip
+
+Next, you may upsample the reconstructed disparity image to the size of
+the images at the pyramid level just below and double the disparity
+values. This gives you a prior for the disparity at this pyramid level
+and makes possible to keep the search constantly small ( $\pm M$).
+This again will reduce the probability of false matches.
+\medskip
+
+Now repeating the above procedure iteratively you may finally obtain
+matches at the ground pyramid level and reconstruct a dense disparity
+surface at the original image resolution. In this assignment you are 
+advised to keep the number of pyramid levels fixed to say 4. This will
+make it possible to register disparity values as large as
+$D_{\mbox{max}} \;=\; M \cdot (2^4 -1) = 15M$ using a constant small
+search area of $\pm M$ pixels.
+
+
+
+\section{Depth computation}
+Since the images are rectified in some unknown manner, possibly
+cropped, and since we know nothing about the calibration of the
+cameras, we have no chance of  reconstructing Euclidean depth.  In
+this assignment, you may visualize the resulting disparity values
+using $k(D_0-d)$, where $k$ is a scaling factor (converting to
+intensity values) and where $D_0$ is some translation constant making
+the resulting values positive.  
+
+
+
+
+\section{Testing}
+To validate and document your program you should use:
+\begin{itemize}
+\item The {\em Pentagon} stereo image pair available at the Absalon
+  course homepage.
+\item As supplement use the synthetic {\em Venus}- stereo image pair
+  also available on Absalon and at the Middelbury stereo database \\ 
+  \url{http://vision.middlebury.edu/stereo/data/scenes2001/}
+\end{itemize}
+
+You are not requested to make a quantitative evaluation of your result
+(although ground truth is available for the {\em Venus}-images). 
+Instead  you should make a subjective qualitative evaluation.
+For development you are welcome to supplement with a few (small and
+simple) stereo images, but results on these should not be reported. 
+
+
+\subsection{What to report}
+For each image pair you should give numbers for the detected feature
+points and the matched ones.  You should show the reconstructed
+disparity surface for each image and you should give a short
+qualitative evaluation of your result. Also please give a short
+informal/subjective evaluation of your implementation. 
+\medskip
+
+It is important is that you explain what can be seen and noted in each image
+you show. Don't trust that I see the same as you. Please also note
+errors and successes.  Good observations and comments may show more
+important than good results.  
+\medskip
+
+It is not mandatory to evaluate your algorithm on images with ground
+truth (known exact disparity surface), but it will show your maturity
+and scientific capabilities.  You may count how large a fraction of
+matches that have a measured disparity more than 1 pixel from the true
+value, you may show histograms of the error, as well as the mean and
+standard deviation of the disparity error.  However, all this is
+add-on, and should not be considered before you have a working program.
+%\newpage
+
+
+
+\subsection{Appendix A}
+For those still not sure what to implement the pseudo-code below may be
+a help. 
+
+\begin{verbatim}
+   L_1 = L;  R_1 = R;
+   for i = 1..N
+       EDL_i = detectEdgePoints(L_i);
+       ORL_i = gradientOrientation(L_i);
+       EDR_i = detectEdgePoints(R_i);
+       ORR_i = gradientOrientation(R_i);
+       if (i < N)
+           L_(i+1) = downsample(L_i);
+           R_(i+1) = downsample(R_i);
+       end
+    end
+    M = SearchRadius;
+    D_N = zeros(size(L_N);
+    for i = N..1
+        (points, values) = match(EDL_i, ORL_i, EDR_i, ORR_i, M);
+        D_N = interp(D_i, points, values, maxitt, lambda);
+        if (i > 1)
+             D_(i-1) = upsample(D_i);
+        end
+    end
+    output(D_1);
+\end{verbatim}
+
+\noindent
+Since some stereo images are in color you may have to convert them to
+gray, eg. using  $Y \;=\; 0.3*R + 0.59*G + 0.11*B$.  If you:
+
+\begin{itemize}
+   \item Don't understand this color transformation, 
+   \item Don't know how to detect edge point or compute a gradient orientation,
+   \item Don't know what up- and downsampling means or how it is done,
+   \item Don't know why you need an anti-aliasing filter and how it is
+     implemented using a convolution with a low-pass-filter,
+   \item Are uncertain on how to code the matching
+\end{itemize}
+\begin{center}
+
+{\bf \Large Then you are strongly advised to show up \\
+at the exercises Wednesday December 17 at 15:15. }
+\end{center}
+
+\end{document}

@@ -1,0 +1,126 @@
+\documentclass[a4paper,12pts]{article}
+
+\usepackage[english]{babel}
+\usepackage[latin1]{inputenc}
+%\usepackage[dvips]{graphicx}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{color}
+\usepackage{hyperref}
+
+
+\begin{document}
+
+\title{Assignment 4: Kanade-Lucas-Tomasi (KLT) Tracker. \\
+Vision and Image Processing}
+\author{Kim Steenstrup Pedersen, Søren Olsen, and Jan Kremer}
+\date{\today}
+\maketitle
+
+
+\noindent This is the fourth mandatory assignment on the course Vision
+and Image Processing. The goal is for you to get familiar with
+programming for computer vision with a focus on a classical 2 dimensional tracking algorithm.
+
+You have to pass this and the following mandatory assignments in order
+to pass this course. There are in total 4 mandatory pass/fail
+assignments. This is a \textbf{group assignment}, i.e., we expect that you will
+form small groups of 2 to 4 students that will work on this assignment.
+
+The deadline for this assignment is Friday 23/01 2015. You must submit
+your solution electronically via the Absalon home page. Go to the
+assignments list and choose this assignment and upload your solution
+prior to the deadline. Remember to include your name and KU user name
+(login for {KU}net) in the solution. If you do not pass the
+assignment, having made a SERIOUS attempt, you will get a second
+chance of submitting a new solution.
+
+A solution consist of:
+\begin{itemize}
+\item Your solution source code (Matlab / Python scripts / C / C++
+  code) with comments about the major steps involved in each Question
+  (see below).
+\item Your code should be structured such that there is one main file
+  that we can run to reproduce all the results presented in your
+  report. This main file can, if you like, call other files with
+  functions / classes.
+\item Your code should also include a README text file describing how
+  to compile (if relevant) and run your program, as well as a list of
+  all relevant libraries needed for compiling or using your code. If
+  we cannot make your code run we will consider your submission
+  incomplete and you may be asked to resubmit.
+\item The code, auxiliary files and README file should be put into a
+  compressed archive file in either the ZIP or tar format (RAR is not
+  allowed - we simply cannot read your archive).
+\item A PDF file with notes detailing your answers to the questions,
+  which may include graphs and tables if needed ({\bf Max 5 pages}
+  text including figures and tables). Do NOT include your source code
+  in this PDF file.
+\end{itemize}
+
+
+
+\subsection*{A note on relevant software}
+We recommend that you select either Matlab / Python / C / C++ as the programming language
+you use for your solutions for these assignments. We also recommend that you select the
+language you are most confident in - the focus should be on learning the methods and not
+learning a new programming language.
+
+If you wish to use Matlab, the University of Copenhagen has a license agreement with
+MathWorks that allow students to download and install a copy of Matlab on personal
+computers. On the KUnet web site you find a menu item called Software Library
+(Softwarebiblioteket):\\ \href{https://intranet.ku.dk/selvbetjening/Sider/Software-bibliotek.aspx}{https://intranet.ku.dk/selvbetjening/Sider/Software-bibliotek.aspx}. \\
+Under
+this menu item you can find a link to The Mathworks - Matlab \& Simulink +
+toolboxes. Click this link and follow the instructions for how to install on your own
+computer.
+
+If you use Python or C / C++ we recommend that you use the OpenCV library
+\url{http://opencv.org} and / or the VLFeat library
+\url{http://www.vlfeat.org/}. Both libraries provide an extensive collection of
+implementations of central computer vision algorithms. OpenCV provides an interface for
+Python. Follow the installation instructions on these websites to install on your own
+computer. OpenCV is also available via MacPorts on Mac\-OSX.
+
+If you wish to program your solutions in C++ we recommend the use of
+the CImg Library, which can be obtained at \url{http://cimg.sourceforge.net}
+
+
+
+
+\section*{Kanade-Lucas-Tomasi (KLT) Tracker}
+
+The goal of this assignment is to implement and experiment with the classical Kanade-Lucas-Tomasi (KLT) feature 
+tracking algorithm as described in \cite{Tomasi91a}. A copy of the original paper is available for download in Absalon. 
+Read the paper carefully and then make an implementation of the outlined algorithm. We suggest that you use the 
+parameter choices outlined in the paper. Please indicate in the report what choices you make for the different parameters 
+including the choice of weight window function $w(\mathbf{x})$.
+
+Extra: A possible extension is to include the features introduced by Shi and Tomasi 
+\cite{Shi94a} ({OpenCV} has an implementation, see \verb|GoodFeaturesToTrackDetector|).
+
+
+\section{Testing}
+
+Run your implementation on a couple of video sequences of your choice. You can for instance use the sequence you find 
+at \url{http://www.cs.toronto.edu/~fleet/research/DataSoftware/dudek.tar.gz} or use OpenCV video capture capability to 
+capture your own video sequence. Do the parameter choices from \cite{Tomasi91a} generalize to your video sequences? 
+
+Try to tune the parameters such that your implementation provides good results on your video sequences. 
+
+Illustrate your results for both experiments with a couple of frames with the matched features drawn on top of the video image.
+
+\section{Extension (Optional)}
+Try to come up with an approach to tracking an object by combining all features on the object of interest. That is, how 
+would you form an object region (i.e. a bounding box or circle) from the feature points on the object?
+
+Explain your approach and illustrate your implementation on one or more video sequences by showing selected frames.
+
+
+\bibliography{assignment4} \bibliographystyle{plain}
+
+
+
+\end{document}

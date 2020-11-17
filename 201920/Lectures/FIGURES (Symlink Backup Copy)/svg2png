@@ -1,0 +1,12 @@
+#!/bin/bash
+
+input_name=$1
+if [ "$input_name" = "" ]
+then
+    echo "Missing input file"
+    exit 1
+fi
+
+output_name=${input_name%.svg}.png
+inkscape -D -e $output_name $input_name
+exit $?

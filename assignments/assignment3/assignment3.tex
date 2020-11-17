@@ -1,0 +1,192 @@
+\documentclass[a4paper,12pts]{article}
+
+\usepackage[english]{babel}
+\usepackage[latin1]{inputenc}
+%\usepackage[dvips]{graphicx}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{color}
+\usepackage{hyperref}
+
+
+\begin{document}
+
+\title{Assignment 3: Stereo correspondence analysis \\
+Vision and Image Processing}
+\author{Søren Olsen, Francois Lauze}
+\date{\today}
+\maketitle
+
+\begin{center}
+\includegraphics[width=5.6cm]{Images/imL.png} 
+\hspace{2mm}
+\includegraphics[width=5.6cm]{Images/imR.png} 
+\end{center}
+
+
+\noindent 
+This is the third mandatory assignment on the course Vision
+and Image Processing. The goal for you is to get familiar with
+dense stereo matching for disparity computation.
+\bigskip
+
+{\bf This assignment must be solved in groups}. We expect that you will
+form small groups of 2 to 4 students that will work on this assignment.
+You have to pass this and the other 3 mandatory assignments in
+order to pass the course.   If you do not pass this assignment, but you
+have made a SERIOUS attempt, you will get a second chance of
+submitting a new solution. 
+\bigskip
+
+{\bf The deadline for this assignment is Monday 8/1, 2018 at 20:00}. 
+You must submit your solution electronically via the Absalon home
+page. For general information on relevant software, requirement to the form
+of your solution including the maximal page limit, how to upload on
+Absalon etc, please see the first assignment.
+
+
+\section*{Stereo}
+The goal of this assignment is to implement and test a traditional
+algorithm for dense stereo correspondence analysis.  You may assume
+that the stereo image pairs show richly textured piecewise smooth
+surfaces with Lambertian reflectance properties and that the images are
+rectified, i.e. corresponding point have the same vertical coordinate
+value. In this assignment you are not supposed to compute depth, but
+only disparities, i.e. the difference in horizontal coordinate. 
+\medskip
+
+Some images (see later) may be in color and some in gray. You are
+welcome to base your matching procedure on color information or to
+attribute each pixels with a longer vector of feature values
+(e.g. obtained by local filtering). You may also stick to intensity
+matching. Color conversion from RGB to luminance Y or intensity I may
+be done using  $Y \;=\; 0.3*R + 0.6*G + 0.1*B$, and $I = (R+G+B)/3$. 
+\medskip
+
+You may find that the descriptive strength of intensity indormation is
+limited (and may not always single out the correct matches).  One
+approach to reduce the number of false matches is to apply
+two-way matching and only to accept candidate matches that agree. 
+Another approach is to require that the best match candidate is much
+better than the second best candidate.
+\medskip
+
+Despite the techniques described above, pixel comparisons are not
+sufficieltly descriptive for solving the correspondence problem.  In
+this assigment you should compute the data term (measuring the
+degree of intensity agreement) by normalized cross correlation. You
+should vary the size of the window, say from 5x5 over 7x7 to 11x11,
+and report what you think is the optimal size. 
+\medskip
+
+You will need to apply the knowledge that the scene surface is
+piecewise smooth.  This implies that the disparity surface will be
+piecewise smooth. Thus, you may estimate the disparity gradient
+magnitude and prefer solutions that keep this small most places. You
+may then encounter a situation whith two matching possibilities: The
+first candidate solution has a small data term (intensities agree) but
+results in a large disparity gradient, the second possibility is just
+the opposite, having a small smoothness term.  You have to weight the
+data term and the continuity term together in one way or another to
+select the best match.  
+\medskip
+
+To handle numerically large disparities a coarse-to-fine approach
+using  a (truncated) factor-2 pyramid representation of the images
+should be applied. Here, each image in the pyramid is subsampled with
+a factor of 2 (along each dimension) from the next larger image. The
+disparity magnitude will be reduced with the same factor. Thus, the
+disparity will be numerically small at the topmost pyramid level and 
+a small search area (of $\pm M$) will suffice.
+\medskip
+
+Having estimated the disparity at the top pyramid level you may
+upsample the reconstructed disparity image to the size of the images
+at the pyramid level just below and double the disparity values. This
+gives you a prior for the disparity at this pyramid level and makes
+possible to keep the search constantly small (e.g. $\pm M$).  
+\medskip
+
+Repeating the above procedure iteratively down through the pyramid
+levels you may finally obtain matches at the ground pyramid level and
+reconstruct a dense disparity surface at the original image
+resolution. In this assignment you are  advised to keep the number of
+pyramid levels fixed to say 4. This will make it possible to register
+disparity values as large as $D_{\mbox{max}} \;=\; M \cdot (2^4 -1) = 15M$ 
+using a constant small search area of $\pm M$ pixels. Please note that
+in some images you may know that the disparity always will be negative
+while in other images it may (due to cropping) be both positive and
+negative. 
+\medskip
+
+Several images show scene with depth discontinuities.  We recommed
+that you do {\bf not} detect discontinuities. However, partial visible
+(occluded) areas cling to discontinuities, and it might show
+advantageous to register such pixels explicitly. Occluded
+pixels have no match and appears together.  Thus one possibility is to
+mark pixels as occluded if the mean (or median) of the data term in a
+3x3 window is sufficiently large.   
+\medskip
+
+You are most welcome to compare your method with stereo algorithms
+available on the internet or as OpenCV-implementation, but using such
+implementations only will not be considered a solution to this
+assignment. 
+\medskip
+
+To sum up, you should implement and test your own algorithm for
+solving the stereo correspondence problem using normalized cross
+correlation in a pyramid representation of the images. To enforce
+smoothness correspondences resulting in a large disparity gradient
+should be avoided. Two-way matching, explicit occlusion detection
+etc. may by exploited to limit the number of false matching. The
+required amount of experiments and documentation is described below. 
+
+
+
+
+
+\section{Testing}
+To validate and document your program you should use the images
+{\em Tsubuka}, {\em Venus} and {\em Map} from the 2001stereo data
+set available at:
+\url{http://vision.middlebury.edu/stereo/data/scenes2001/}. 
+Two of these data comes with ground truth such that you may evaluate the
+performance numerically. This should be done by for each image
+computing: 
+\begin{itemize}
+\item The mean disparity error
+\item The standard deviation of the disparity error
+\item The number and fraction of large errors (error $\geq$ 5 pixels).
+\item The number and fraction of detected occluded pixels (if detected)
+\end{itemize}
+
+In addition you should describe your subjective evaluation of the
+results including comments on where significant or strange errors
+occur. Please note that I probably don't see the same as you - explain
+to me what I should notice. Good observations and comments may show
+more important than good results.  
+\medskip
+
+For development you are strongly encuraged to use a few (small and
+simple synthetic) stereo images, but results on such data should not
+be reported.  
+
+
+\subsection{What to report}
+Your report should include about two pages description of your
+solution, the choises that you have made and a summation of your
+results. 
+
+
+For each image pair you should report the numbers described above and
+your subjective evaluation. You should also show a gray-coded image of
+the computed disparity surface.
+\medskip  
+
+In addition your code should be included (Please se first assignment
+for the general information on submissions).
+\end{document}
+

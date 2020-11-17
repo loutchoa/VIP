@@ -1,0 +1,378 @@
+% Some more or less standard macros and packages used in most 
+% of my documents.
+%
+% some of these macros have been "stolen" from Stefan...
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{graphicx}
+\usepackage{stackrel}
+\usepackage{nicefrac}
+\usepackage{color}
+
+
+% some of these commands would clash with beamer
+\@ifundefined{theorem}{\newtheorem{theorem}{Theorem}}{}%
+\@ifundefined{lemma}{\newtheorem{lemma}[theorem]{Lemma}}{}%
+\@ifundefined{proposition}{\newtheorem{proposition}[theorem]{Proposition}}{}%
+\@ifundefined{corollary}{\newtheorem{corollary}[theorem]{Corollary}}{}%
+\@ifundefined{definition}{\newtheorem{definition}[theorem]{Definition}}{}%
+\@ifundefined{remark}{\newtheorem{remark}[theorem]{Remark}}{}%
+\@ifundefined{claim}{\newtheorem{claim}[theorem]{Claim}}{}%
+\@ifundefined{example}{\newtheorem{example}[theorem]{Example}}{}%
+\@ifundefined{exercise}{\newtheorem{exercise}[theorem]{Exercise}}{}%
+\ifx \proof \undefined
+\newcommand{\proof}{{\flushleft\textbf{Proof.\/}~}}
+\else
+\fi
+
+%\newtheorem{example}{Example}[section]
+
+\newcommand{\eop}{\hfill$\square$}
+%\newcommand{\iff}{\Leftrightarrow}
+\newcommand{\Iff}{\Longleftrightarrow}
+%\newcommand{\implies}{\Rightarrow}
+\newcommand{\Implies}{\Longrightarrow}
+\renewcommand{\because}{\Leftarrow}
+\newcommand{\Because}{\Longleftarrow}
+
+
+
+
+\numberwithin{equation}{section}
+
+
+%\input xy
+%\xyoption{all}
+
+
+
+
+\newcommand{\argmin}{\mathrm{argmin}}
+\newcommand{\argmax}{\mathrm{argmax}}
+
+\newcommand{\Aa}{{\mathcal A}}
+\newcommand{\Bb}{{\mathcal B}}
+\newcommand{\Cc}{{\mathcal C}}
+\newcommand{\Dd}{{\mathcal D}}
+\newcommand{\Ee}{{\mathcal E}}
+\newcommand{\Ff}{{\mathcal F}}
+\newcommand{\Gg}{{\mathcal G}}
+\newcommand{\Hh}{{\mathcal H}}
+\newcommand{\Ii}{{\mathcal I}}
+\newcommand{\Jj}{{\mathcal J}}
+\newcommand{\Kk}{{\mathcal K}}
+\newcommand{\Ll}{{\mathcal L}}
+\newcommand{\Mm}{{\mathcal M}}
+\newcommand{\Nn}{{\mathcal N}}
+\newcommand{\Oo}{{\mathcal O}}
+\newcommand{\Pp}{{\mathcal P}}
+\newcommand{\Qq}{{\mathcal Q}}
+\newcommand{\Rr}{{\mathcal R}}
+\newcommand{\Ss}{{\mathcal S}}
+\newcommand{\Tt}{{\mathcal T}}
+\newcommand{\Uu}{{\mathcal U}}
+\newcommand{\Vv}{{\mathcal V}}
+\newcommand{\Ww}{{\mathcal W}}
+\newcommand{\Xx}{{\mathcal X}}
+\newcommand{\Yy}{{\mathcal Y}}
+\newcommand{\Zz}{{\mathcal Z}}
+
+
+\renewcommand{\AA}{{\mathbb A}}
+\newcommand{\BB}{{\mathbb B}}
+\newcommand{\CC}{{\mathbb C}}
+\newcommand{\DD}{{\mathbb D}}
+\newcommand{\EE}{{\mathbb E}}
+\newcommand{\FF}{{\mathbb F}}
+\newcommand{\GG}{{\mathbb G}}
+\newcommand{\HH}{{\mathbb H}}
+\newcommand{\II}{{\mathbb I}}
+\newcommand{\JJ}{{\mathbb J}}
+\newcommand{\KK}{{\mathbb K}}
+\newcommand{\LL}{{\mathbb L}}
+\newcommand{\MM}{{\mathbb M}}
+\newcommand{\NN}{{\mathbb N}}
+\newcommand{\OO}{{\mathbb O}}
+\newcommand{\PP}{{\mathbb P}}
+\newcommand{\QQ}{{\mathbb Q}}
+\newcommand{\RR}{{\mathbb R}}
+\ifx \SS \undefined
+\newcommand{\SS}{{\mathbb S}}
+\else
+\renewcommand{\SS}{{\mathbb S}}
+\fi
+\newcommand{\TT}{{\mathbb T}}
+\newcommand{\UU}{{\mathbb U}}
+\newcommand{\VV}{{\mathbb V}}
+\newcommand{\WW}{{\mathbb W}}
+\newcommand{\XX}{{\mathbb X}}
+\newcommand{\YY}{{\mathbb Y}}
+\newcommand{\ZZ}{{\mathbb Z}}
+
+\newcommand{\fkA}{{\frak A}}
+\newcommand{\fkB}{{\frak B}}
+\newcommand{\fkC}{{\frak C}}
+\newcommand{\fkD}{{\frak D}}
+\newcommand{\fkE}{{\frak E}}
+\newcommand{\fkF}{{\frak F}}
+\newcommand{\fkG}{{\frak G}}
+\newcommand{\fkH}{{\frak H}}
+\newcommand{\fkI}{{\frak I}}
+\newcommand{\fkJ}{{\frak J}}
+\newcommand{\fkK}{{\frak K}}
+\newcommand{\fkL}{{\frak L}}
+\newcommand{\fkM}{{\frak M}}
+\newcommand{\fkN}{{\frak N}}
+\newcommand{\fkO}{{\frak O}}
+\newcommand{\fkP}{{\frak P}}
+\newcommand{\fkQ}{{\frak Q}}
+\newcommand{\fkR}{{\frak R}}
+\newcommand{\fkS}{{\frak S}}
+\newcommand{\fkT}{{\frak T}}
+\newcommand{\fkU}{{\frak U}}
+\newcommand{\fkV}{{\frak V}}
+\newcommand{\fkW}{{\frak W}}
+\newcommand{\fkX}{{\frak X}}
+\newcommand{\fkY}{{\frak Y}}
+\newcommand{\fkZ}{{\frak Z}}
+
+
+
+\newcommand{\bA}{{\bf A}}
+\newcommand{\bB}{{\bf B}}
+\newcommand{\bC}{{\bf C}}
+\newcommand{\bD}{{\bf D}}
+\newcommand{\bE}{{\bf E}}
+\newcommand{\bF}{{\bf F}}
+\newcommand{\bG}{{\bf G}}
+\newcommand{\bH}{{\bf H}}
+\newcommand{\bI}{{\bf I}}
+\newcommand{\bJ}{{\bf J}}
+\newcommand{\bK}{{\bf K}}
+\newcommand{\bL}{{\bf L}}
+\newcommand{\bM}{{\bf M}}
+\newcommand{\bN}{{\bf N}}
+\newcommand{\bO}{{\bf O}}
+\newcommand{\bP}{{\bf P}}
+\newcommand{\bQ}{{\bf Q}}
+\newcommand{\bR}{{\bf R}}
+\newcommand{\bS}{{\bf S}}
+\newcommand{\bT}{{\bf T}}
+\newcommand{\bU}{{\bf U}}
+\newcommand{\bV}{{\bf V}}
+\newcommand{\bW}{{\bf W}}
+\newcommand{\bX}{{\bf X}}
+\newcommand{\bY}{{\bf Y}}
+\newcommand{\bZ}{{\bf Z}}
+
+
+
+\newcommand{\ba}{{\bf a}}
+\newcommand{\bb}{{\bf b}}
+\newcommand{\bc}{{\bf c}}
+\newcommand{\bd}{{\bf d}}
+\newcommand{\be}{{\bf e}}
+\newcommand{\bff}{{\bf f}}
+\newcommand{\bg}{{\bf g}}
+\newcommand{\bh}{{\bf h}}
+\newcommand{\bi}{{\bf i}}
+\newcommand{\bj}{{\bf j}}
+\newcommand{\bk}{{\bf k}}
+\newcommand{\bl}{{\bf l}}
+\newcommand{\bm}{{\bf m}}
+\newcommand{\bn}{{\bf n}}
+\newcommand{\bo}{{\bf o}}
+\newcommand{\bp}{{\bf p}}
+\newcommand{\bq}{{\bf q}}
+\newcommand{\br}{{\bf r}}
+\newcommand{\bs}{{\bf s}}
+\newcommand{\bt}{{\bf t}}
+\newcommand{\bu}{{\bf u}}
+\newcommand{\bv}{{\bf v}}
+\newcommand{\bw}{{\bf w}}
+\newcommand{\bx}{{\bf x}}
+\newcommand{\by}{{\bf y}}
+\newcommand{\bz}{{\bf z}}
+
+% some bold SYMBOLS, means using math fonts
+
+% uppercase latin
+
+\newcommand{\bsA}{\boldsymbol{A}}
+\newcommand{\bsB}{\boldsymbol{B}}
+\newcommand{\bsC}{\boldsymbol{C}}
+\newcommand{\bsD}{\boldsymbol{D}}
+\newcommand{\bsE}{\boldsymbol{E}}
+\newcommand{\bsF}{\boldsymbol{F}}
+\newcommand{\bsG}{\boldsymbol{G}}
+\newcommand{\bsH}{\boldsymbol{H}}
+\newcommand{\bsI}{\boldsymbol{I}}
+\newcommand{\bsJ}{\boldsymbol{J}}
+\newcommand{\bsK}{\boldsymbol{K}}
+\newcommand{\bsL}{\boldsymbol{L}}
+\newcommand{\bsM}{\boldsymbol{M}}
+\newcommand{\bsN}{\boldsymbol{N}}
+\newcommand{\bsO}{\boldsymbol{O}}
+\newcommand{\bsP}{\boldsymbol{P}}
+\newcommand{\bsQ}{\boldsymbol{Q}}
+\newcommand{\bsR}{\boldsymbol{R}}
+\newcommand{\bsS}{\boldsymbol{S}}
+\newcommand{\bsT}{\boldsymbol{T}}
+\newcommand{\bsU}{\boldsymbol{U}}
+\newcommand{\bsV}{\boldsymbol{V}}
+\newcommand{\bsW}{\boldsymbol{W}}
+\newcommand{\bsX}{\boldsymbol{X}}
+\newcommand{\bsY}{\boldsymbol{Y}}
+\newcommand{\bsZ}{\boldsymbol{Z}}
+
+% lowercase latin
+\newcommand{\bsa}{\boldsymbol{a}}
+\newcommand{\bsb}{\boldsymbol{b}}
+\newcommand{\bsc}{\boldsymbol{c}}
+\newcommand{\bsd}{\boldsymbol{d}}
+\newcommand{\bse}{\boldsymbol{e}}
+\newcommand{\bsf}{\boldsymbol{f}}
+\newcommand{\bsg}{\boldsymbol{g}}
+\newcommand{\bsh}{\boldsymbol{h}}
+\newcommand{\bsi}{\boldsymbol{i}}
+\newcommand{\bsj}{\boldsymbol{j}}
+\newcommand{\bsk}{\boldsymbol{k}}
+\newcommand{\bsl}{\boldsymbol{l}}
+\newcommand{\bsm}{\boldsymbol{m}}
+\newcommand{\bsn}{\boldsymbol{n}}
+\newcommand{\bso}{\boldsymbol{o}}
+\newcommand{\bsp}{\boldsymbol{p}}
+\newcommand{\bsq}{\boldsymbol{q}}
+\newcommand{\bsr}{\boldsymbol{r}}
+\newcommand{\bss}{\boldsymbol{s}}
+\newcommand{\bst}{\boldsymbol{t}}
+\newcommand{\bsu}{\boldsymbol{u}}
+\newcommand{\bsv}{\boldsymbol{v}}
+\newcommand{\bsw}{\boldsymbol{w}}
+\newcommand{\bsx}{\boldsymbol{x}}
+\newcommand{\bsy}{\boldsymbol{y}}
+\newcommand{\bsz}{\boldsymbol{z}}
+
+
+
+% uppercase greek
+
+\newcommand{\bsGamma}{\boldsymbol{\Gamma}}
+\newcommand{\bsDelta}{\boldsymbol{\Delta}}
+\newcommand{\bsTheta}{\boldsymbol{\Theta}}
+\newcommand{\bsLambda}{\boldsymbol{\Lambda}}
+\newcommand{\bsXi}{\boldsymbol{\Xi}}
+\newcommand{\bsPi}{\boldsymbol{\Pi}}
+\newcommand{\bsSigma}{\boldsymbol{\Sigma}}
+\newcommand{\bsUpsilon}{\boldsymbol{\Upsilon}}
+\newcommand{\bsPhi}{\boldsymbol{\Phi}}
+\newcommand{\bsPsi}{\boldsymbol{\Psi}}
+\newcommand{\bsOmega}{\boldsymbol{\Omega}}
+
+% lowercase greek
+\newcommand{\bsalpha}{\boldsymbol{\alpha}}
+\newcommand{\bsbeta}{\boldsymbol{\beta}}
+\newcommand{\bsgamma}{\boldsymbol{\gamma}}
+\newcommand{\bsdelta}{\boldsymbol{\delta}}
+\newcommand{\bsepsilon}{\boldsymbol{\epsilon}}
+\newcommand{\bszeta}{\boldsymbol{\zeta}}
+\newcommand{\bseta}{\boldsymbol{\eta}}
+\newcommand{\bstheta}{\boldsymbol{\theta}}
+\newcommand{\bsiota}{\boldsymbol{\iota}}
+\newcommand{\bskappa}{\boldsymbol{\kappa}}
+\newcommand{\bslambda}{\boldsymbol{\lambda}}
+\newcommand{\bsmu}{\boldsymbol{\mu}}
+\newcommand{\bsnu}{\boldsymbol{\nu}}
+\newcommand{\bsxi}{\boldsymbol{\xi}}
+\newcommand{\bsomicron}{\boldsymbol{\omicron}}
+\newcommand{\bspi}{\boldsymbol{\pi}}
+\newcommand{\bsrho}{\boldsymbol{\rho}}
+\newcommand{\bssigma}{\boldsymbol{\sigma}}
+\newcommand{\bstau}{\boldsymbol{\tau}}
+\newcommand{\bsupsilon}{\boldsymbol{\upsilon}}
+\newcommand{\bsphi}{\boldsymbol{\phi}}
+\newcommand{\bschi}{\boldsymbol{\chi}}
+\newcommand{\bspsi}{\boldsymbol{\psi}}
+\newcommand{\bsomega}{\boldsymbol{\omega}}
+
+
+% Math operators
+\DeclareMathOperator{\Aff}{Aff}
+\DeclareMathOperator{\Argmax}{Arg.max}
+\DeclareMathOperator{\Argmin}{Arg.min}
+\DeclareMathOperator{\cond}{Cond}
+\DeclareMathOperator{\Cone}{cone}
+\DeclareMathOperator{\corr}{Corr}
+\DeclareMathOperator{\cov}{cov}
+\DeclareMathOperator{\Div}{div}
+\DeclareMathOperator{\Dom}{dom}
+\DeclareMathOperator{\esssup}{ess.sup}
+\DeclareMathOperator{\Exp}{Exp}
+\DeclareMathOperator{\Grad}{Grad}
+\DeclareMathOperator{\Graph}{Graph}
+\DeclareMathOperator{\Hess}{Hess}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Id}{id}
+\DeclareMathOperator{\Imag}{Im}
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\Log}{Log}
+\DeclareMathOperator{\Null}{Null}
+\DeclareMathOperator{\Per}{Per}
+\DeclareMathOperator{\proj}{proj}
+\DeclareMathOperator{\prox}{prox}
+\DeclareMathOperator{\Range}{Range}
+\DeclareMathOperator{\Real}{Re}
+\DeclareMathOperator{\sgn}{sign}
+\DeclareMathOperator{\sinc}{sinc}
+\DeclareMathOperator{\Supp}{supp}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\Vol}{Vol}
+
+
+
+\newcommand{\Del}{\nabla}
+\newcommand{\LaplBelt}{\Delta}
+
+% Sheaf-like sections operator...
+\newcommand{\Ssect}[2]{\Gamma\left({#1},{#2}\right)}
+
+
+\newcommand{\mono}{\hookrightarrow}
+\newcommand{\epi}{\twoheadrightarrow}
+\newcommand{\iso}{\overset{\simeq}{\longrightarrow}}
+%\newcommand{\iso}{\stackrel{\backsim}{\longrightarrow}}
+%\newcommand{\iso}{\stackrel{\ensuremath \raisebox{-100pt}{$\backsim$}}{\longrightarrow}}
+
+\newcommand{\udesc}[2]{\underset{#1}{\underbrace{#2}}}
+\newcommand{\odesc}[2]{\overset{#1}{\overbrace{#2}}}
+\newcommand{\utxt}[2]{\underset{#1}{#2}}
+\newcommand{\iprod}[3][{}]{\left\langle{#2},{#3}\right\rangle_{#1}}
+
+
+\newcommand{\pder}[2]{\frac{\partial{#1}}{\partial{#2}}}
+\newcommand{\dpder}[2]{\dfrac{\partial{#1}}{\partial{#2}}}
+\newcommand{\pderd}[3]{\frac{\partial^{#1}{#2}}{\partial{#3}}}
+\newcommand{\cpder}[2]{{#1}_{#2}}
+\newcommand{\tder}[3]{\frac{d^{#1}{#2}}{d{#3}^{#1}}}
+\newcommand{\dtder}[3]{\dfrac{d^{#1}{#2}}{d{#3}^{#1}}}
+\newcommand{\uder}[2]{\frac{d{#1}}{d{#2}}}
+\newcommand{\uDer}[2]{\frac{D{#1}}{d{#2}}}
+\newcommand{\duder}[2]{\dfrac{d{#1}}{d{#2}}}
+
+
+
+\newcommand{\dirder}[2][{=0}]{\left.\frac{d}{d{#2}}\right\arrowvert_{{#2}{#1}}}
+\newcommand{\dirdert}[1][{=0}]{\left.\frac{d}{dt}\right\arrowvert_{t{#1}}}
+\newcommand{\pdert}[1][{=0}]{\left.\frac{\partial}{\partial t}\right\arrowvert_{t{#1}}}
+\newcommand{\altpdert}[2][{=0}]{\left.\frac{\partial}{\partial t}{#2}\right\arrowvert_{t{#1}}}
+
+
+
+\newcommand{\uphi}{\phi}
+\renewcommand{\phi}{\varphi}
+\newcommand{\uepsilon}{\epsilon}
+\renewcommand{\epsilon}{\varepsilon}
+
