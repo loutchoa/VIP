@@ -2,7 +2,7 @@
 
 \mode<presentation> 
 %{ %\usetheme[nat,dogma]{Frederiksberg} }
-%  \usetheme{Diku}
+  \usetheme{Diku}
 %}
 
 \usepackage{manfnt}
@@ -72,7 +72,7 @@ stere'os
   University of Copenhagen
 }
 
-\date[2019-20 B2] % (optional, should be abbreviation of conference name)
+\date[2020-21 B2] % (optional, should be abbreviation of conference name)
 % {Research Presentation, Diku 2006}
 
 \definecolor{gold}{rgb}{0.95,0.83,0.0}
@@ -112,7 +112,7 @@ stere'os
 
 
 \begin{frame}
-  \frametitle{Plan for today and December 4th}
+  \frametitle{Plan for today and December 7th, 2020}
   \begin{itemize}
   \item Image Formation and reflectance.
   \item Lighting Models.
@@ -229,12 +229,36 @@ stere'os
 
 
 \begin{frame}[t]{Materials and Light}
-  \begin{center}
-   \includegraphics[width=0.8\textwidth]{FIGURES/transparent_and_opaque}
-  \end{center}
-  ~\\
+  \begin{picture}(320,250)
+  \put(20,170){\includegraphics[width=0.35\textwidth]{FIGURES/transparent_and_opaque}}
+  \put(18, 162)
+  {
+  	\begin{minipage}[t]{0.35\textwidth}
+  		{\small Refraction and caustics due to moving water surface.}
+  	\end{minipage}
+  }
+  \put(150,120){\includegraphics[width=0.4\textwidth]{IMAGES/microscope_beetle_dorsal_small}}
+  \put(148, 215)
+  {
+  	\begin{minipage}[t]{0.4\textwidth}
+  		{\small Refraction and color absorption due to amber.}
+ 	\end{minipage}	
+  }
   \pause
-  From now, only opaque objects (but come to me if you are interested in tranparency and refraction!)
+  \put(40, 50){\includegraphics[width=0.2\textwidth]{FIGURES/Bust_Beethoven}}
+  \put(105, 90)
+  {
+  	\begin{minipage}[t]{0.5\textwidth}
+  	{\small quasi-monochromatic and mat!}
+  	\end{minipage}
+  }
+  \put(10,30)
+  {
+  	\begin{minipage}[t]{1.0\textwidth}
+  	From now, we discuss only opaque scenes/objects (but come to me if you are interested in transparency and refraction).
+  	\end{minipage}
+  }
+  \end{picture}
 \end{frame}
 
 
@@ -1005,7 +1029,7 @@ $$\kappa(\bx,\theta_i,\phi_i,\theta_e,\phi_e) = \frac{L^s(\bx,\theta_e,\phi_e)}{
 
 \begin{frame}{Literature, available in Abaslon}
   \begin{itemize}
-  \item Horn, Shape from shading 1970
+  \item Horn, Shape from shading 1970, 1975
   \item Woodham, Photometric Stereo, 1980
   \item Fishler-Bolles, RANSAC, 1981
   \end{itemize}

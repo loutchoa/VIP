@@ -1,217 +1,173 @@
 \documentclass[a4paper,12pts]{article}
 
-
-
-\usepackage{francois-preamble}
-\usepackage{hyperref}
 \usepackage[english]{babel}
 \usepackage[latin1]{inputenc}
-\setlength{\textwidth}{14cm}
-\setlength{\oddsidemargin}{1cm}
+%\usepackage[dvips]{graphicx}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{color}
+\usepackage{url}
+\usepackage{hyperref}
+
 
 \begin{document}
 
-\title{Assignment 2: Photometric Stereo \\
+\title{Assignment 1: Filtering and edge detection\\
 Vision and Image Processing}
-\author{ Fran\c{c}ois Lauze and Søren Olsen}
-\date{December 2, 2019}
+\author{Søren Olsen, Fran\c{c}ois Lauze}
+\date{\today}
 \maketitle
 
 
 \noindent 
-This is the second mandatory assignment on the course Vision
-and Image Processing. The goal is to implement some basic Photometric Stereo.
+This is the first mandatory assignment on the course Vision and Image
+Processing. The goal for you is to get familiar  with computer vision
+programming with a focus on filtering. Filtering is a core 
+discipline in image processing and forms the basis for feature
+extraction which again is central to many of the techniques we are
+going to study.
 \bigskip
 
-{\bf This assignment must be solved in groups}. We expect that you will
-form small groups of 2 to 4 students that will work on this assignment.
-You have to pass this and the other mandatory assignments in
-order to pass the course. 
+{\bf This assignment must be solved individually}.  You have to pass
+this and the following mandatory assignments and quizzes in order to
+pass this course.  If you do not pass the assignment, but you have
+made a SERIOUS attempt, you will get a second chance of submitting a
+new solution.  
 \bigskip
 
-{\bf The deadline for this assignment is Monday 16/12, 2019 at 20:00}. 
-You must submit your solution electronically via the Absalon home
-page. For general information on relevant software, requirement to the form
-of your solution including the maximal page limit, how to upload on
-Absalon etc, please see the first assignment.
+{\bf The deadline for this assignment is Wednesday 2/12, 2019 at 22:00}. 
+You must submit your solution electronically via the Absalon homepage. Go to
+the assignments list and choose this assignment and upload your
+solution prior to the deadline.  Remember to include your name and KU
+user name (login for {KU}net) in the solution. 
 
-\section*{Photometric Stereo}
-
-The goal of this assignment is to implement basic photometric stereo and a bit less basic.
-Don't be surprised when your results are disappointing, Photometric stereo requires care.
-This is why RANSAC and normal field smoothing are introduced in this assignment.
-
-For that you will
-use several datasets provided to you on Absalon in the \texttt{Assignment 2 Code and data}
-folder, \texttt{Beethoven.mat}, \texttt{mat\_vase.mat}, \texttt{shiny\_vase.mat},
-\texttt{Buddha.mat} and \texttt{face.mat}.  The first three datasets consists of 3 images,
-and are synthetic examples, while the 4th one consists of 10 images and is a real one, and
-the last consists of 27 images and is a real example too.
+\subsection*{Filtering and edge detection}
+Filtering (really Finite Input Responce filtering) is done by
+convolutions. Among the most applied filters are the Gaussian and its
+first and second order derivatives. Convolution with a Gaussian itself
+will blurr the image.  Convolutions with the two first order Gaussian
+derivatives provides an estimate of the gradient field from which the
+gradient magnitude may be derived and visualised. Convolution with the
+sum of the second order (unmixed) partial derivatives of a Gaussian
+may be used both to detect blobs (as
+the local extremes) and edges (as the zero crossings). Edges and
+blobs in images code much of the semantic information available in
+the images and are often used as building elements in further analysis.
 \medskip
-~\\
-\emph{Note on datasets and softwares.\/} Datasets are stored in Matlab mat-files. Each
-file contains the following variables:
-\begin{itemize}
-\item a 3D array \texttt{I} of size $(m,n,k)$ where $(m,n)$ is the
-  size of each image and $k$ is the number of views, i.e., view $i$
-  corresponding to lighting $\bs_i$ is \texttt{I(:,:,i)}.
-\item a 2D binary array \texttt{mask} of size $(m,n)$. Pixels with
-  values 1 (\texttt{true}) indicate positions where intensity data has
-  been recorded. Photometric Stereo should only be solved at these
-  points.
-\item an array $\texttt{S}$ of light vectors, of size $(k,3)$, where
-  line $i$ represents the directional light $\bs_i$ that was used to
-  obtain image \texttt{I(:,:,i)}.
+
+In this assignment you must demonstrate that you can write programs
+for image filtering and edge detection. Please check the note below on
+the use of relevant software.  In detail you must demonstrate that you
+and implement, perform and evaluate: 
+\newpage
+
+\begin{itemize} 
+\item Gaussian filtering. Show the result using $\sigma = 1, 2, 4, 8$
+  and explain in detail what can be seen.
+\item Gradient magnitude computation using Gaussian derivatives.
+  Use $\sigma = 1, 2, 4, 8$, and explain in detail what can be seen
+  and how the results differ.
+\item Laplacian-Gaussian- (= Mexican hat-) filtering. Again,  use 
+$\sigma = 1, 2, 4, 8$, and explain in detail what can be seen and how
+  the results differ. 
+\item Canny (or similar) edge detection. Select what you think is a
+  set of good parameter values, apply, show, and compare with your
+  previous results. 
 \end{itemize}
 
-Software for integration of the normal field and surface display is provided
-Python in a module called \texttt{ps\_utils.py}, written for Python 3. 
-\begin{itemize}
-\item \texttt{unbiased\_integrate(n1, n2, n3, mask)}
-  computes a depth map for the normal field given by $(n1,n2,n3)^T$
-  only within the mask using a so-called ``Direct Poisson Solver''.
-  The resulting array \texttt{z} has the same size as
-  \texttt{mask}. Values that correspond to pixel locations where
-  \texttt{mask == 0} are set to \texttt{nan} (Not a Number).
-\item \texttt{simchony\_integrate(n1, n2, n3, mask)}
-  computes a depth map for the normal field given by $(n1,n2,n3)^T$
-  a Fourier-Transform based solver. As for \texttt{unbiased\_integrate}, 
-  the resulting array \texttt{z} has the same size as
-  \texttt{mask}. Values that correspond to pixel locations where
-  \texttt{mask == 0} are set to \texttt{nan} (Not a Number).
-\item \texttt{display\_surface(z, albedo=None)} renders a 3D surface which height is coded in $z$.
-  it requires Python's module/package \texttt{mayavi} which can be installed via \texttt{Anaconda} and \texttt{pip}.
-\item \texttt{read\_data\_file(filename)} reads a dataset Matlab
-  mat-file and returns \texttt{I}, \texttt{mask} and \texttt{S}.
-\item \texttt{ransac\_3dvector(data, threshold, max\_data\_tries=100, \\max\_iters=1000,
-    p=0.9, det\_threshold=1e-1, verbose=2)} is a specialised implementation of RANSAC which
-  returns an hopefully robust solution to the estimation of a 3D vector $m$ from
-  measurements $I_i$ which should be obtained as $I_i = s_i^T m$, with $s_1,\dots,s_K$
-  known vectors (light sources to us).
-\item  \texttt{smooth\_normal\_field(n1, n2, n3, mask, iters=100, tau=0.05,\\
-    verbose=False)} smoothes a normal field via a numerical partial differential equation.
-\item It also contains a few extra functions that should not
-  necessarily be of interest to you.
-\end{itemize}
-Each of these functions are reasonably well documented using docstrings, so, after
-importing \texttt{ps\_utils.py}, you can invoke \texttt{help(ps\_utils)} for the entire
-documentation, or for a specific function such as \texttt{help(ransac\_3dvector)} etc...
+Please note that the Gaussian is strictly positive.  However it may be
+truncated to finite size at  about $\pm 3.0 \sigma$ along each
+dimension. Similarly, the first and second derivatives of a Gaussian
+may be truncated at about $\pm 3.4 \sigma$ and $\pm 3.8 \sigma$.
+We recommended that you verify these values visually, by plotting 1D
+versions of the Gaussian and its derivatives. 
+\bigskip
 
+You should apply the above-mentioned methods to the image 
+{\bf lena.jpg} available at Absalon. However, you are encouraged to
+use other images as well (in particular very simple images [say a
+black square on a white background), that more easily let you verify
+your result).  Please notice that for display purpose some filtering
+results probably need to be remapped into [0:1] or whatever your
+display routine requires. Please avoid using strange color coding.
+\bigskip
+
+Unless explicit stated otherwise, during this course you are allowed
+to apply routines available in any library that you may find useful.
+For this assignment in particular, you are not supposed to implement
+neither Canny edge detection nor Gaussian convolutions (although the
+latter might be a good programming exercise). Please see the note on
+relevant software below. Also, please recognise that the less you
+demonstrate your ability to write relevant (non-trivial) code, the
+more you are expected to conduct experiments and (in particular) to
+comment on these and to present your new knowledge gained by the
+experiments. 
 \medskip
-~\\
-\begin{figure}[h]
-  \centering
-  \begin{tabular}[h]{c@{\hskip 2mm}c@{\hskip 2mm}c@{\hskip 2mm}c}
-    \includegraphics[width=0.2\textwidth]{DataCode2/Beethoven} &
-    \includegraphics[width=0.2\textwidth]{DataCode2/shiny_vase}& 
-    \includegraphics[width=0.2\textwidth]{DataCode2/Buddha3} &
-    \includegraphics[width=0.2\textwidth]{DataCode2/face12}    
-  \end{tabular}
-  \caption{A few images out of the different datasets}
-\end{figure}
 
-For both all datasets
-manipulation and reshaping is very important to maintain good
-performances.  Both Matlab and Python/Numpy allow you to extract a
-subarray as a list of value, and affects a list of value to an image
-subarray. Woodham's estimation can be vectorised.  
-You may want to look at integration source code to see how Python allows for 
-these type of manipulations.
+As described in detail below your answer should include your code
+and a pdf-file describing your solution and showing examples of
+well-chosen image results.  Each image/graph or other illustration 
+should be commented (don't trust that I see what you see).  In detail
+a  solution must include:
 
-When using RANSAC, however, an estimation of albedo and normal will have to be performed
-one pixel at a time.
+\begin{enumerate}
+\item  A PDF file describing your answers to the assignment,
+  which may include images, graphs and tables if needed. You are
+  allowed to used {\bf Max 8 pages} of text including figures and
+  tables). We recommend to write only 3 pages of text excluding all
+  graphics.  Images should be shown large enough to show what you want
+  me to see (if printet on A4 paper). Do NOT include your source code
+  in this PDF file. 
 
-\section{A bit of modelling}
-You shoud provide brief answers to the following points. No need to elaborate too much.
+\item A  zip-file containing: 
 \begin{itemize}
-\item Write for a generic pixel, light source and normal, Lambert's law in its simplest form.
-\item How is Lambert's law modified to deal with self shadows.
-\item What about cast shadows? Comment
-  on the difference between the two.
-\item Comment on the modelling limits of Lambert's law.
-\item How can we obtain an estimate of albedo and normals in Woodham's approach to
-  Photometric Stereo. Write the equation.
-\item What should be done if one uses RANSAC. Please describe. It will help you when
-  implementing the RANSAC based estimation.
+\item Your solution source code in original plain text format (Python / MatLab 
+  / scripts / C / C++ code) with comments about the major steps
+  involved in each question.  
+\item Your code should be structured such that there is one main file
+  that we can run to reproduce all the results presented in your
+  report. This main file can, if you like, call other files with
+  functions / classes.
+\item A README text file describing how
+  to compile (if relevant) and run your program, as well as a list of
+  all relevant libraries needed for compiling or using your code. If
+  we cannot make your code run we will consider your submission
+  incomplete and you may be asked to resubmit.
 \end{itemize}
+\end{enumerate}
+
+Please notice that all documents (except your main answer to the
+assignment) including all code must be put into a single compressed
+archive file in the ZIP format (RAR is not allowed - we simply cannot
+read your archive). 
+
+ 
+
+% Extra: Consider extending your solution to multi-scale detectors such
+% as the multi-scale Laplacian, multi-scale Harris corner or
+% Harris-Laplacian detectors.
 
 
+\subsection*{A note on relevant software}
+We recommend that you select python 3.6 as your programming
+language. Matlab, C,  C++ may be other
+possibilities. Also we recommend that you select the language you are  
+most confident in. The focus should be on learning the methods and not 
+learning a new programming language.
+\medskip
 
+We strongly recommend that you install and use the OpenCV library
+\url{http://opencv.org/} and/or the VLFeat library
+\url{http://www.vlfeat.org/}. Both libraries provide an extensive
+collection of implementations of central computer vision
+algorithms. OpenCV3 is included in recent Anaconda Python download
+packages. Previous OpenCV distributions may be used as well.
+\medskip
 
-\section{Beethoven Dataset}
-
-\texttt{Beethoven} is a synthetic and clean dataset, with exactly 3
-images. If $nz$ is the number of pixels inside the non-zero part of
-the mask, You should create an array $J$ of size/shape $(3,nz)$ and
-obtain the albedo modulated normal field as $M=S^{-1}J$. With it,
-extract the albedo within the mask, display it as a 2D image.  Then
-extract the normal field by normalizing $M$, extract its components
-$n1$, $n2$, $n3$. Solve for depth and display it at different view
-points. 
-
-
-\section{mat\_vase Dataset}
-
-\texttt{mat\_vase} is a synthetic and clean dataset, with exactly 3
-images. If $nz$ is the number of pixels inside the non-zero part of
-the mask, You should create an array $J$ of size/shape $(3,nz)$ and
-obtain the albedo modulated normal field as $M=S^{-1}J$. With it,
-extract the albedo within the mask, display it as a 2D image.  Then
-extract the normal field by normalizing $M$, extract its components
-$n1$, $n2$, $n3$. Solve for depth and display it at different view
-points. 
-
-\section{shiny\_vase Dataset}
-
-\texttt{shiny\_vase} is a synthetic and clean dataset, however not
-respecting Lambert's law, which cannot cope with specularities.
-It also consists of  exactly 3
-images. If $nz$ is the number of pixels inside the non-zero part of
-the mask, You should create an array $J$ of size/shape $(3,nz)$ and
-obtain the albedo modulated normal field as $M=S^{-1}J$. With it,
-extract the albedo within the mask, display it as a 2D image.  Then
-extract the normal field by normalizing $M$, extract its components
-$n1$, $n2$, $n3$. Solve for depth and display it at different view
-points. Comment on what happens here.
-
-Do you think that RANSAC could provide a better estimation of normals? Explain.  You
-should try and replace Woodham's first step (via inverse/pseudoinverse) with RANSAC
-estimation. The \texttt{threshold} parameter in \texttt{ransac\_3dvector()} should no more
-than be 2.0. After the estimation for each pixel, extract the normals and the
-albedo. Display and comment on the results. Do they differ from Woodham's estimation?  Try
-then to make the estimated normal field smoother using the
-\texttt{smooth\_normal\_field()} function. You may experiment with the \texttt{iters}
-parameter.
-
-
-
-\section{Buddha Dataset}
-
-\texttt{Buddha} is real dataset, with exactly 10
-images. If $nz$ is the number of pixels inside the non-zero part of
-the mask, You should create an array $J$ of size/shape $(10,nz)$ and
-obtain the albedo modulated normal field as $M=S^\dagger J$ (the pseudo-inverse). With it,
-extract the albedo within the mask, display it as a 2D image.  Then
-extract the normal field by normalizing $M$, extract its components
-$n1$, $n2$, $n3$. Solve for depth and display it at different view
-points.
-
-You should try and replace Woodham's first step (via inverse/pseudoinverse) with an
-estimation using RANSAC. The \texttt{threshold} parameter in \texttt{ransac\_3dvector()}
-should be \textbf{at least} 25.0 Experiment with it.  After the estimation for each pixel,
-extract the normals and the albedo. Display and comment on the results.  Try then to make
-the estimated normal field smoother using the \texttt{smooth\_normal\_field()}
-function. You may experiment with the \texttt{iters} parameter.
-
-
-\section{face Dataset}
-\texttt{Buddha} is real dataset, with exactly 27 images. If $nz$ is the number of pixels
-inside the non-zero part of the mask, You should create an array $J$ of size/shape
-$(27,nz)$ and obtain the albedo modulated normal field via RANSAC with a threshold of 10.0
-Try then to make the estimated normal field smoother using the
-\texttt{smooth\_normal\_field()} function. You may experiment with the \texttt{iters}
-parameter. Report your results.
-
+If you wish to use Matlab, you may download and install this from the
+``Softwarebiblioteket'' available at KUnet.
 
 
 \end{document}
