@@ -1,0 +1,26 @@
+\frametitle{Some afternoon exercises}
+With Pen and paper.
+  \begin{itemize}
+  \item $a = [1,4,-5,3]$, $b = [3,-1,0,2]$. Compute inner product $a^T b$ and outer product $a b^T$.
+  \item Compute inner product $b^T a$ and outer product $ba^T$
+  \item $M$ = $ab^T$. Dimensions? Can I compute $M a$, $M b$. If yes, any observations?
+  \end{itemize}
+  With Python / numpy.
+  \begin{itemize}
+  \item We can define vectors as 1D numpy arrays
+\begin{verbatim}
+>> import numpy as np
+>> a = np.array([1,4,-5,3])
+>> b = np.array([3,-1,0,2])
+>> np.dot(a, b)
+>> a @ b # Python 3.x only
+\end{verbatim}
+  \item \texttt{np.dot} can be used for matrix-vector multiplication, matrix-matrix multiplication: try and understand the following and explore!
+\begin{verbatim}
+>> a.shape = (4,1)
+>> print(a.shape)
+>> b.shape = (-1,1)
+>> print(a@b.T, a.T@b)
+>> print(a@b)
+\end{verbatim}
+  \end{itemize}
