@@ -1,0 +1,261 @@
+%!PS-Adobe-3.0 EPSF-3.0
+%%Title: LayerLevels.fig
+%%Creator: fig2dev Version 3.2.7a
+%%CreationDate: 2019-01-15 10:29:37
+%%BoundingBox: 0 0 632 483
+%%Magnification: 1.0000
+%%EndComments
+%%BeginProlog
+/$F2psDict 200 dict def
+$F2psDict begin
+$F2psDict /mtrx matrix put
+/col-1 {0 setgray} bind def
+/col0 {0.000 0.000 0.000 srgb} bind def
+/col7 {1.000 1.000 1.000 srgb} bind def
+
+end
+
+/cp {closepath} bind def
+/ef {eofill} bind def
+/gr {grestore} bind def
+/gs {gsave} bind def
+/sa {save} bind def
+/rs {restore} bind def
+/l {lineto} bind def
+/rl {rlineto} bind def
+/m {moveto} bind def
+/rm {rmoveto} bind def
+/n {newpath} bind def
+/s {stroke} bind def
+/sh {show} bind def
+/slc {setlinecap} bind def
+/slj {setlinejoin} bind def
+/slw {setlinewidth} bind def
+/srgb {setrgbcolor} bind def
+/rot {rotate} bind def
+/sc {scale} bind def
+/sd {setdash} bind def
+/ff {findfont} bind def
+/sf {setfont} bind def
+/scf {scalefont} bind def
+/sw {stringwidth} bind def
+/tr {translate} bind def
+/tnt {dup dup currentrgbcolor
+  4 -2 roll dup 1 exch sub 3 -1 roll mul add
+  4 -2 roll dup 1 exch sub 3 -1 roll mul add
+  4 -2 roll dup 1 exch sub 3 -1 roll mul add srgb}
+  bind def
+/shd {dup dup currentrgbcolor 4 -2 roll mul 4 -2 roll mul
+  4 -2 roll mul srgb} bind def
+ /DrawEllipse {
+	/endangle exch def
+	/startangle exch def
+	/yrad exch def
+	/xrad exch def
+	/y exch def
+	/x exch def
+	/savematrix mtrx currentmatrix def
+	x y tr xrad yrad sc 0 0 1 startangle endangle arc
+	closepath
+	savematrix setmatrix
+	} def
+
+/$F2psBegin {$F2psDict begin /$F2psEnteredState save def} def
+/$F2psEnd {$F2psEnteredState restore end} def
+
+/pageheader {
+sa
+n 0 483 m 0 0 l 632 0 l 632 483 l cp clip
+-53.1 518.0 tr
+1 -1 sc
+$F2psBegin
+10 setmiterlimit
+0 slj 0 slc
+ 0.06000 0.06000 sc
+} bind def
+/pagefooter {
+$F2psEnd
+restore
+} bind def
+%%EndProlog
+pageheader
+%
+% Fig objects follow
+%
+% 
+% here starts figure with depth 50
+/Times-Roman ff 333.33 scf sf
+2475 2625 m
+gs 1 -1 sc (CONV 3) col0 sh gr
+% Arc
+7.500 slw
+0 slc
+gs  clippath
+3072 1209 m 3066 1197 l 3180 1108 l 3209 1161 l cp
+eoclip
+n 2987.5 900.0 312.5 -73.7398 73.7398 arc
+gs col0 s gr
+ gr
+% arrowhead
+0 slj
+n 3180 1108 m 3089 1192 l 3209 1161 l 3180 1108 l  cp gs 0.00 setgray ef gr  col0 s
+% Arc
+gs  clippath
+2997 4434 m 2991 4422 l 3105 4333 l 3134 4386 l cp
+eoclip
+n 2912.5 4125.0 312.5 -73.7398 73.7398 arc
+gs col0 s gr
+ gr
+% arrowhead
+n 3105 4333 m 3014 4417 l 3134 4386 l 3105 4333 l  cp gs 0.00 setgray ef gr  col0 s
+% Arc
+gs  clippath
+3072 3309 m 3066 3297 l 3180 3208 l 3209 3261 l cp
+eoclip
+n 2987.5 3000.0 312.5 -73.7398 73.7398 arc
+gs col0 s gr
+ gr
+% arrowhead
+n 3180 3208 m 3089 3292 l 3209 3261 l 3180 3208 l  cp gs 0.00 setgray ef gr  col0 s
+% Arc
+gs  clippath
+8997 1584 m 8991 1572 l 9105 1483 l 9134 1536 l cp
+eoclip
+n 8912.5 1275.0 312.5 -73.7398 73.7398 arc
+gs col0 s gr
+ gr
+% arrowhead
+n 9105 1483 m 9014 1567 l 9134 1536 l 9105 1483 l  cp gs 0.00 setgray ef gr  col0 s
+% Arc
+gs  clippath
+8997 2634 m 8991 2622 l 9105 2533 l 9134 2586 l cp
+eoclip
+n 8912.5 2325.0 312.5 -73.7398 73.7398 arc
+gs col0 s gr
+ gr
+% arrowhead
+n 9105 2533 m 9014 2617 l 9134 2586 l 9105 2533 l  cp gs 0.00 setgray ef gr  col0 s
+% Arc
+gs  clippath
+8997 3684 m 8991 3672 l 9105 3583 l 9134 3636 l cp
+eoclip
+n 8912.5 3375.0 312.5 -73.7398 73.7398 arc
+gs col0 s gr
+ gr
+% arrowhead
+n 9105 3583 m 9014 3667 l 9134 3636 l 9105 3583 l  cp gs 0.00 setgray ef gr  col0 s
+% Arc
+gs  clippath
+9072 5859 m 9066 5847 l 9180 5758 l 9209 5811 l cp
+eoclip
+n 8987.5 5550.0 312.5 -73.7398 73.7398 arc
+gs col0 s gr
+ gr
+% arrowhead
+n 9180 5758 m 9089 5842 l 9209 5811 l 9180 5758 l  cp gs 0.00 setgray ef gr  col0 s
+% Arc
+gs  clippath
+9072 7284 m 9066 7272 l 9180 7183 l 9209 7236 l cp
+eoclip
+n 8987.5 6975.0 312.5 -73.7398 73.7398 arc
+gs col0 s gr
+ gr
+% arrowhead
+n 9180 7183 m 9089 7267 l 9209 7236 l 9180 7183 l  cp gs 0.00 setgray ef gr  col0 s
+% Arc
+gs  clippath
+2997 5484 m 2991 5472 l 3105 5383 l 3134 5436 l cp
+eoclip
+n 2912.5 5175.0 312.5 -73.7398 73.7398 arc
+gs col0 s gr
+ gr
+% arrowhead
+n 3105 5383 m 3014 5467 l 3134 5436 l 3105 5383 l  cp gs 0.00 setgray ef gr  col0 s
+% Arc
+gs  clippath
+9072 8634 m 9066 8622 l 9180 8533 l 9209 8586 l cp
+eoclip
+n 8987.5 8325.0 312.5 -73.7398 73.7398 arc
+gs col0 s gr
+ gr
+% arrowhead
+n 9180 8533 m 9089 8617 l 9209 8586 l 9180 8533 l  cp gs 0.00 setgray ef gr  col0 s
+% Arc
+gs  clippath
+8997 4809 m 8991 4797 l 9105 4708 l 9134 4761 l cp
+eoclip
+n 8912.5 4500.0 312.5 -73.7398 73.7398 arc
+gs col0 s gr
+ gr
+% arrowhead
+n 9105 4708 m 9014 4792 l 9134 4761 l 9105 4708 l  cp gs 0.00 setgray ef gr  col0 s
+% Ellipse
+n 9051 6268 375 375 0 360 DrawEllipse gs col0 s gr
+% Ellipse
+n 9075 7650 375 375 0 360 DrawEllipse gs col0 s gr
+% Polyline
+n 2100 2250 m 3900 2250 l 3900 2700 l 2100 2700 l
+ cp gs col0 s gr % Polyline
+n 2100 3375 m 3900 3375 l 3900 3825 l 2100 3825 l
+ cp gs col0 s gr % Polyline
+n 2100 4425 m 3900 4425 l 3900 4875 l 2100 4875 l
+ cp gs col0 s gr % Polyline
+n 7425 1575 m 11400 1575 l 11400 2025 l 7425 2025 l
+ cp gs col0 s gr % Polyline
+n 7800 2625 m 10500 2625 l 10500 3075 l 7800 3075 l
+ cp gs col0 s gr % Polyline
+n 8325 3750 m 9975 3750 l 9975 4200 l 8325 4200 l
+ cp gs col0 s gr % Polyline
+n 8550 4800 m 9600 4800 l 9600 5250 l 8550 5250 l
+ cp gs col0 s gr % Polyline
+n 2025 1200 m 3825 1200 l 3825 1650 l 2025 1650 l
+ cp gs col0 s gr /Times-Roman ff 333.33 scf sf
+900 1425 m
+gs 1 -1 sc (Level: ) col0 sh gr
+/Times-Roman ff 333.33 scf sf
+6675 1800 m
+gs 1 -1 sc (Net: ) col0 sh gr
+/Times-Roman ff 333.33 scf sf
+2475 3675 m
+gs 1 -1 sc (RELU) col0 sh gr
+/Times-Roman ff 333.33 scf sf
+2175 4800 m
+gs 1 -1 sc (MAXPOOL) col0 sh gr
+/Times-Roman ff 333.33 scf sf
+8850 6375 m
+gs 1 -1 sc (FC) col0 sh gr
+/Times-Roman ff 333.33 scf sf
+8925 7800 m
+gs 1 -1 sc (FC) col0 sh gr
+/Times-Roman ff 333.33 scf sf
+8550 4050 m
+gs 1 -1 sc (Level 3) col0 sh gr
+/Times-Roman ff 333.33 scf sf
+8550 3000 m
+gs 1 -1 sc (Level 2) col0 sh gr
+/Times-Roman ff 333.33 scf sf
+8550 1875 m
+gs 1 -1 sc (Level 1) col0 sh gr
+/Times-Roman ff 333.33 scf sf
+8100 975 m
+gs 1 -1 sc (Image) col0 sh gr
+/Times-Roman ff 333.33 scf sf
+8625 5175 m
+gs 1 -1 sc (Level 4) col0 sh gr
+/Times-Roman ff 333.33 scf sf
+2325 1500 m
+gs 1 -1 sc (CONV 3) col0 sh gr
+% Arc
+gs  clippath
+3072 2259 m 3066 2247 l 3180 2158 l 3209 2211 l cp
+eoclip
+n 2987.5 1950.0 312.5 -73.7398 73.7398 arc
+gs col0 s gr
+ gr
+% arrowhead
+n 3180 2158 m 3089 2242 l 3209 2211 l 3180 2158 l  cp gs 0.00 setgray ef gr  col0 s
+% here ends figure;
+pagefooter
+showpage
+%%Trailer
+%EOF
