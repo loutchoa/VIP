@@ -1032,101 +1032,101 @@ Notice that $||x|| = 1$
 
 
 % ----------------------------------------------------------------
-\begin{frame}
-  \frametitle{Assignment 4 - details}
-  \begin{itemize}
-  \item The assignment consists in implementing a prototypical Content
-    Based Image Retrieval System \\[5mm]
-  \item Five parts:
-    \begin{enumerate}
-     \item Select and prepare the data you want to work with \\[3mm]
-      \item Gather descriptors in training and test image data set \\[3mm]
-      \item Construct codebook using k-means and Bag-Of-Words \\[3mm]
-      \item Project test images onto codebook, and generate BoW \\[3mm]
-    \item Retrieve according to similarity measure
-    \end{enumerate}
-  \end{itemize}
- \end{frame}
+% \begin{frame}
+%   \frametitle{Assignment 4 - details}
+%   \begin{itemize}
+%   \item The assignment consists in implementing a prototypical Content
+%    Based Image Retrieval System \\[5mm]
+%  \item Five parts:
+%    \begin{enumerate}
+%     \item Select and prepare the data you want to work with \\[3mm]
+%      \item Gather descriptors in training and test image data set \\[3mm]
+%      \item Construct codebook using k-means and Bag-Of-Words \\[3mm]
+%      \item Project test images onto codebook, and generate BoW \\[3mm]
+%    \item Retrieve according to similarity measure
+%    \end{enumerate}
+%  \end{itemize}
+% \end{frame}
 
 %-------------------------------------------------------------------
- \begin{frame}
- \frametitle{What descriptors}
-  \begin{itemize}
-     \item   You are advised to use SIFT features
-     \item   Few versions of SIFT include color. You may miss a lot of
-       information. 
-     \item   You may include color histograms etc. but
-     \item   Advise: Keep it simple
- \end{itemize}
- \end{frame}
+% \begin{frame}
+% \frametitle{What descriptors}
+%  \begin{itemize}
+%     \item   You are advised to use SIFT features
+%     \item   Few versions of SIFT include color. You may miss a lot of
+%       information. 
+%     \item   You may include color histograms etc. but
+%     \item   Advise: Keep it simple%
+% \end{itemize}
+% \end{frame}
 
  
  %-------------------------------------------------------------------
- \begin{frame}
-   \frametitle{Training and testing}
-   \begin{itemize}
-   \item Download Caltech-101 image database (131 MB) with 101
-     categories or the newer Caltech-256 base (1.2 GB) \\[5mm]
-   \item Split data into two parts: Training data [say 70-80\%] and test
-      [say 20-30 \%]. Don't look at the test data before  testing \\[5mm]
-    \item During development you may split the training data into a
-     construction part [say 80\%] and an validation part [say 20\%].\\[5mm]
-   \item Never use the test set for tuning ! 
-  \end{itemize}
- \end{frame}
+% \begin{frame}
+%   \frametitle{Training and testing}
+%   \begin{itemize}
+%   \item Download Caltech-101 image database (131 MB) with 101
+%     categories or the newer Caltech-256 base (1.2 GB) \\[5mm]
+%   \item Split data into two parts: Training data [say 70-80\%] and test
+%      [say 20-30 \%]. Don't look at the test data before  testing \\[5mm]
+%    \item During development you may split the training data into a
+%     construction part [say 80\%] and an validation part [say 20\%].\\[5mm]
+%   \item Never use the test set for tuning ! 
+%  \end{itemize}
+% \end{frame}
 
 
 %-------------------------------------------------------------------
- \begin{frame}
-  \frametitle{What error ?}
-  \begin{itemize}
-   \item Error on training data versus error on test data \\[5mm]
-   \item What if the training error is less than the test error? \\[5mm]
-%   \pause
-   \item Overfitting is a serious problem.  Often caused by using too
-     few training data (or too complicated model) \\[5mm]
-   \item We want to generalize in order to retrieve/classify new data
-  \end{itemize}
- \end{frame}
+% \begin{frame}
+%  \frametitle{What error ?}
+%  \begin{itemize}
+%   \item Error on training data versus error on test data \\[5mm]
+%   \item What if the training error is less than the test error? \\[5mm]
+%%   \pause
+%   \item Overfitting is a serious problem.  Often caused by using too
+%     few training data (or too complicated model) \\[5mm]
+%   \item We want to generalize in order to retrieve/classify new data
+%  \end{itemize}
+%  \end{frame}
 
 
  
 %-------------------------------------------------------------------
- \begin{frame}
- \frametitle{Cross-validation}
-  \begin{itemize}
-   \item Divide data into say 10 sets (10-fold CV) \\[5mm]
-   \item Train on all but one set that is used testing \\[5mm]
-   \item Retrain and test on all possible combinations \\[5mm]
-   \item Compute the average test error
- \end{itemize}
- \end{frame}
+% \begin{frame}
+% \frametitle{Cross-validation}
+%  \begin{itemize}
+%   \item Divide data into say 10 sets (10-fold CV) \\[5mm]
+%   \item Train on all but one set that is used testing \\[5mm]
+%   \item Retrain and test on all possible combinations \\[5mm]
+%   \item Compute the average test error
+% \end{itemize}
+%  \end{frame}
 
 
 %-------------------------------------------------------------------
- \begin{frame}
-  \frametitle{How to report}
-  \begin{itemize}
-   \item Amount: {\color{blue}{8 pages}} including everything: 
-     Try to be concise, structured etc. Keep text less than 3-4 pages \\[5mm]
-   \item Discussion: This is the most important part \\[5mm]
-   \item Tables: Remember to tell me what I should notice \\[5mm]
-   \item Figures: Remember axis labels etc.  What should I see? \\[5mm]
-   \item Images: Don't show them too small. What should I see? \\[5mm]
-   \item Explanations: Don't expect me to guess what you mean or see
-     yourself \\[5mm]
-   \item {\color{blue}{ERROR ANALYSIS}}: Explain what you think may
-     cause observed errors or unexpected behaviour 
-   \end{itemize}
-   \end{frame}
+% \begin{frame}
+%  \frametitle{How to report}
+%  \begin{itemize}
+%   \item Amount: {\color{blue}{8 pages}} including everything: 
+%     Try to be concise, structured etc. Keep text less than 3-4 pages \\[5mm]
+%   \item Discussion: This is the most important part \\[5mm]
+%    \item Tables: Remember to tell me what I should notice \\[5mm]
+%   \item Figures: Remember axis labels etc.  What should I see? \\[5mm]
+%   \item Images: Don't show them too small. What should I see? \\[5mm]
+%   \item Explanations: Don't expect me to guess what you mean or see
+%     yourself \\[5mm]
+%   \item {\color{blue}{ERROR ANALYSIS}}: Explain what you think may
+%     cause observed errors or unexpected behaviour 
+%   \end{itemize}
+%   \end{frame}
 
 
 %-------------------------------------------------------------------
- \begin{frame}
-  \begin{center}
-    {\color{blue}{\Huge QUESTIONS ?}}
-  \end{center}
- \end{frame}
+% \begin{frame}
+%  \begin{center}
+%    {\color{blue}{\Huge QUESTIONS ?}}
+%  \end{center}
+%  \end{frame}
 
 
 
