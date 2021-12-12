@@ -1,0 +1,242 @@
+% Some more or less standard macros and packages used in most 
+% of my documents.
+%
+% some of these macros have been "stolen" from Stefan...
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{graphicx}
+\usepackage{stackrel}
+\usepackage{nicefrac}
+%\usepackage[dvipsnames]{color}
+
+
+% some of these commands would clash with beamer
+\@ifundefined{theorem}{\newtheorem{theorem}{Theorem}[section]}{}%
+\@ifundefined{lemma}{\newtheorem{lemma}[theorem]{Lemma}}{}%
+\@ifundefined{proposition}{\newtheorem{proposition}[theorem]{Proposition}}{}%
+\@ifundefined{corollary}{\newtheorem{corollary}[theorem]{Corollary}}{}%
+\@ifundefined{definition}{\newtheorem{definition}[theorem]{Definition}}{}%
+\@ifundefined{remark}{\newtheorem{remark}[theorem]{Remark}}{}%
+\@ifundefined{claim}{\newtheorem{claim}[theorem]{Claim}}{}%
+
+%\newtheorem{example}{Example}[section]
+
+\newcommand{\eop}{\hfill$\square$}
+%\newcommand{\iff}{\Leftrightarrow}
+\newcommand{\Iff}{\Longleftrightarrow}
+%\newcommand{\implies}{\Rightarrow}
+\newcommand{\Implies}{\Longrightarrow}
+\renewcommand{\because}{\Leftarrow}
+\newcommand{\Because}{\Longleftarrow}
+
+%\newcommand{\proof}{{\flushleft\textbf{Proof.\/}~}}
+
+
+\numberwithin{equation}{section}
+
+
+\input xy
+\xyoption{all}
+
+\newcommand{\argmin}{\mathrm{argmin}}
+\newcommand{\argmax}{\mathrm{argmax}}
+
+\newcommand{\Aa}{{\mathcal A}}
+\newcommand{\Bb}{{\mathcal B}}
+\newcommand{\Cc}{{\mathcal C}}
+\newcommand{\Dd}{{\mathcal D}}
+\newcommand{\Ee}{{\mathcal E}}
+\newcommand{\Ff}{{\mathcal F}}
+\newcommand{\Gg}{{\mathcal G}}
+\newcommand{\Hh}{{\mathcal H}}
+\newcommand{\Ii}{{\mathcal I}}
+\newcommand{\Jj}{{\mathcal J}}
+\newcommand{\Kk}{{\mathcal K}}
+\newcommand{\Ll}{{\mathcal L}}
+\newcommand{\Mm}{{\mathcal M}}
+\newcommand{\Nn}{{\mathcal N}}
+\newcommand{\Oo}{{\mathcal O}}
+\newcommand{\Pp}{{\mathcal P}}
+\newcommand{\Qq}{{\mathcal Q}}
+\newcommand{\Rr}{{\mathcal R}}
+\newcommand{\Ss}{{\mathcal S}}
+\newcommand{\Tt}{{\mathcal T}}
+\newcommand{\Uu}{{\mathcal U}}
+\newcommand{\Vv}{{\mathcal V}}
+\newcommand{\Ww}{{\mathcal W}}
+\newcommand{\Xx}{{\mathcal X}}
+\newcommand{\Yy}{{\mathcal Y}}
+\newcommand{\Zz}{{\mathcal Z}}
+
+
+\renewcommand{\AA}{{\mathbb A}}
+\newcommand{\BB}{{\mathbb B}}
+\newcommand{\CC}{{\mathbb C}}
+\newcommand{\DD}{{\mathbb D}}
+\newcommand{\EE}{{\mathbb E}}
+\newcommand{\FF}{{\mathbb F}}
+\newcommand{\GG}{{\mathbb G}}
+\newcommand{\HH}{{\mathbb H}}
+\newcommand{\II}{{\mathbb I}}
+\newcommand{\JJ}{{\mathbb J}}
+\newcommand{\KK}{{\mathbb K}}
+\newcommand{\LL}{{\mathbb L}}
+\newcommand{\MM}{{\mathbb M}}
+\newcommand{\NN}{{\mathbb N}}
+\newcommand{\OO}{{\mathbb O}}
+\newcommand{\PP}{{\mathbb P}}
+\newcommand{\QQ}{{\mathbb Q}}
+\newcommand{\RR}{{\mathbb R}}
+\renewcommand{\SS}{{\mathbb S}}
+\newcommand{\TT}{{\mathbb T}}
+\newcommand{\UU}{{\mathbb U}}
+\newcommand{\VV}{{\mathbb V}}
+\newcommand{\WW}{{\mathbb W}}
+\newcommand{\XX}{{\mathbb X}}
+\newcommand{\YY}{{\mathbb Y}}
+\newcommand{\ZZ}{{\mathbb Z}}
+
+\newcommand{\fkA}{{\frak A}}
+\newcommand{\fkB}{{\frak B}}
+\newcommand{\fkC}{{\frak C}}
+\newcommand{\fkD}{{\frak D}}
+\newcommand{\fkE}{{\frak E}}
+\newcommand{\fkF}{{\frak F}}
+\newcommand{\fkG}{{\frak G}}
+\newcommand{\fkH}{{\frak H}}
+\newcommand{\fkI}{{\frak I}}
+\newcommand{\fkJ}{{\frak J}}
+\newcommand{\fkK}{{\frak K}}
+\newcommand{\fkL}{{\frak L}}
+\newcommand{\fkM}{{\frak M}}
+\newcommand{\fkN}{{\frak N}}
+\newcommand{\fkO}{{\frak O}}
+\newcommand{\fkP}{{\frak P}}
+\newcommand{\fkQ}{{\frak Q}}
+\newcommand{\fkR}{{\frak R}}
+\newcommand{\fkS}{{\frak S}}
+\newcommand{\fkT}{{\frak T}}
+\newcommand{\fkU}{{\frak U}}
+\newcommand{\fkV}{{\frak V}}
+\newcommand{\fkW}{{\frak W}}
+\newcommand{\fkX}{{\frak X}}
+\newcommand{\fkY}{{\frak Y}}
+\newcommand{\fkZ}{{\frak Z}}
+
+
+
+\newcommand{\bA}{{\bf A}}
+\newcommand{\bB}{{\bf B}}
+\newcommand{\bC}{{\bf C}}
+\newcommand{\bD}{{\bf D}}
+\newcommand{\bE}{{\bf E}}
+\newcommand{\bF}{{\bf F}}
+\newcommand{\bG}{{\bf G}}
+\newcommand{\bH}{{\bf H}}
+\newcommand{\bI}{{\bf I}}
+\newcommand{\bJ}{{\bf J}}
+\newcommand{\bK}{{\bf K}}
+\newcommand{\bL}{{\bf L}}
+\newcommand{\bM}{{\bf M}}
+\newcommand{\bN}{{\bf N}}
+\newcommand{\bO}{{\bf O}}
+\newcommand{\bP}{{\bf P}}
+\newcommand{\bQ}{{\bf Q}}
+\newcommand{\bR}{{\bf R}}
+\newcommand{\bS}{{\bf S}}
+\newcommand{\bT}{{\bf T}}
+\newcommand{\bU}{{\bf U}}
+\newcommand{\bV}{{\bf V}}
+\newcommand{\bW}{{\bf W}}
+\newcommand{\bX}{{\bf X}}
+\newcommand{\bY}{{\bf Y}}
+\newcommand{\bZ}{{\bf Z}}
+
+
+
+\newcommand{\ba}{{\bf a}}
+\newcommand{\bb}{{\bf b}}
+\newcommand{\bc}{{\bf c}}
+\newcommand{\bd}{{\bf d}}
+\newcommand{\be}{{\bf e}}
+\newcommand{\bff}{{\bf f}}
+\newcommand{\bg}{{\bf g}}
+\newcommand{\bh}{{\bf h}}
+\newcommand{\bi}{{\bf i}}
+\newcommand{\bj}{{\bf j}}
+\newcommand{\bk}{{\bf k}}
+\newcommand{\bl}{{\bf l}}
+\newcommand{\bm}{{\bf m}}
+\newcommand{\bn}{{\bf n}}
+\newcommand{\bo}{{\bf o}}
+\newcommand{\bp}{{\bf p}}
+\newcommand{\bq}{{\bf q}}
+\newcommand{\br}{{\bf r}}
+\newcommand{\bs}{{\bf s}}
+\newcommand{\bt}{{\bf t}}
+\newcommand{\bu}{{\bf u}}
+\newcommand{\bv}{{\bf v}}
+\newcommand{\bw}{{\bf w}}
+\newcommand{\bx}{{\bf x}}
+\newcommand{\by}{{\bf y}}
+\newcommand{\bz}{{\bf z}}
+
+
+
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\Real}{Re}
+\DeclareMathOperator{\Imag}{Im}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\Id}{id}
+\DeclareMathOperator{\Div}{div}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Grad}{Grad}
+\DeclareMathOperator{\Vol}{Vol}
+\DeclareMathOperator{\Exp}{Exp}
+\DeclareMathOperator{\Argmin}{Arg.min}
+\DeclareMathOperator{\Argmax}{Arg.max}
+\DeclareMathOperator{\sgn}{sign}
+\DeclareMathOperator{\corr}{Corr}
+\DeclareMathOperator{\sinc}{sinc}
+
+
+
+\newcommand{\Del}{\nabla}
+\newcommand{\LaplBelt}{\Delta}
+
+% Sheaf-like sections operator...
+\newcommand{\Ssect}[2]{\Gamma\left({#1},{#2}\right)}
+
+
+\newcommand{\mono}{\hookrightarrow}
+\newcommand{\epi}{\twoheadrightarrow}
+\newcommand{\iso}{\overset{\simeq}{\longrightarrow}}
+%\newcommand{\iso}{\stackrel{\backsim}{\longrightarrow}}
+%\newcommand{\iso}{\stackrel{\ensuremath \raisebox{-100pt}{$\backsim$}}{\longrightarrow}}
+
+\newcommand{\udesc}[2]{\underset{#1}{\underbrace{#2}}}
+\newcommand{\utxt}[2]{\underset{#1}{#2}}
+\newcommand{\iprod}[3][{}]{\left\langle{#2},{#3}\right\rangle_{#1}}
+\newcommand{\pder}[2]{\frac{\partial{#1}}{\partial{#2}}}
+\newcommand{\dpder}[2]{\dfrac{\partial{#1}}{\partial{#2}}}
+\newcommand{\pderd}[3]{\frac{\partial^{#1}{#2}}{\partial{#3}}}
+\newcommand{\cpder}[2]{{#1}_{#2}}
+\newcommand{\tder}[3]{\frac{d^{#1}{#2}}{d{#3}^{#1}}}
+\newcommand{\uder}[2]{\frac{d{#1}}{d{#2}}}
+
+
+
+
+
+\newcommand{\dirder}[2][{=0}]{\left.\frac{d}{d{#2}}\right\arrowvert_{{#2}{#1}}}
+\newcommand{\dirdert}[1][{=0}]{\left.\frac{d}{dt}\right\arrowvert_{t{#1}}}
+\newcommand{\pdert}[1][{=0}]{\left.\frac{\partial}{\partial t}\right\arrowvert_{t{#1}}}
+\newcommand{\altpdert}[2][{=0}]{\left.\frac{\partial}{\partial t}{#2}\right\arrowvert_{t{#1}}}
+
+\newcommand{\uphi}{\phi}
+\renewcommand{\phi}{\varphi}
+\newcommand{\uepsilon}{\epsilon}
+\renewcommand{\epsilon}{\varepsilon}
