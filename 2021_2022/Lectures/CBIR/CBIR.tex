@@ -23,6 +23,7 @@
 \usepackage{francois-preamble}
 \usepackage{multirow}
 % \usepackage{multimedia}
+\usepackage{soul}
 
 
 \newcommand{\cc}{{c\!\!,}}
@@ -132,8 +133,9 @@
   \begin{itemize}
   \item Replace simple textual description by content based analysis.  \\[5mm]
   \item {\color{red}{\bf Exercise:} What content?} \\
-           Discuss for 1 minutes with your neighbor what might be good
-           image features for CBIR \\[5mm]
+           {\st{Discuss for 1 minutes with your neighbor what might be good}}
+          Think for 1 munute about what might be good
+          image features for CBIR \\[5mm]
   \pause
   \item Use for instance Intensity, color, texture, shape etc... in a
     global or local setting.
@@ -147,9 +149,9 @@
 \begin{frame}
   \frametitle{An Inspiration: Text Mining}
   \begin{center}
-    \includegraphics[width=0.5\textwidth,height=0.8\textheight]{Images/ScreenshotMETAXAS}
+    \includegraphics[width=0.48\textwidth,height=0.8\textheight]{Images/ScreenshotMETAXAS}
       ~~
-    \includegraphics[width=0.5\textwidth,height=0.8\textheight]{Images/ScreenshotBloomberg}
+    \includegraphics[width=0.48\textwidth,height=0.8\textheight]{Images/ScreenshotBloomberg}
   \end{center}
 \end{frame}
 
@@ -210,7 +212,7 @@
     \end{center}
   \item Here patches centered around Harris Interest points.
   \item Other possibilities. Here we use SIFT descriptor (more than
-    16000 citations means it must be interesting)
+    64000 citations means it must be interesting)
   \end{itemize}
 \end{frame}
 
@@ -307,7 +309,7 @@ Which descriptors are best (most discriminative, yet robust/general)?
 \begin{frame}
 \frametitle{Good clustering}
 {\color{red}{Exercise:}} \\
-Discuss 1 minutes with your neighbor: What characterizes a good
+Discuss 1 minutes with {\st{your neighbor}} yourself: What characterizes a good
 clustering \\[5mm]
 \pause
 
@@ -365,8 +367,8 @@ Central for clustering is to have a good distance measure
     \item Assignment step: assign each observation $x_j$ to the cluster with closest mean $m_i$\vfill
     \item Update step: recompute the means of the clusters.\vfill
     \end{enumerate}
-  \item {\color{red}{Exercise:}} Discuss for one minute with your
-      neighbor: Does K-means always converge ?
+  \item {\color{red}{Exercise:}} Discuss for one minute with {\st{your
+      neighbor}} yourself: Does K-means always converge ?
   \end{itemize}
 \end{frame}
 
@@ -465,7 +467,7 @@ Central for clustering is to have a good distance measure
     $K$ clusters. \\[3mm]
   \item Hierarchical clustering: group data points by proximity,
     creates a binary tree-structure.  Each non-leaf node contains
-    average distance between it subtrees. Clustering is performed by
+    average distance between its subtrees. Clustering is performed by
     distance threshold. Number of clusters is not predefined. \\[3mm]
   \item Distribution model: observed data is produced by $K$
     distributions: clusters belong most likely to the same
@@ -514,11 +516,11 @@ Central for clustering is to have a good distance measure
 \frametitle{When do BOW malfunction}
 
 {\color{red}{Exercise:}} \\
-Discuss 1 minutes with your neighbor when a Bag of Words
+Discuss 1 minutes with \st{your neighbor} yourself when a Bag of Words
 representation is insufficient or misleading \\[4mm]
 \pause
 
-Example: When spatial arrangement do matter, eg. ``Putin on Obama''.
+Example: When spatial arrangement do matter, % eg. ``Putin on Obama''.
 \pause
     \begin{center}
       \includegraphics[width=0.5\textwidth]{Images/PutinOnObama.jpg}
@@ -566,7 +568,7 @@ Example: When spatial arrangement do matter, eg. ``Putin on Obama''.
     d_{KL}\left(v_1,v_2\right) = \frac12\left( D_{KL}(v_1||v_2) +  D_{KL}(v_2||v_1)\right)
     $$
   \item $\chi^2$-distance measure $\sum \frac{|v_{1i} - v_{2i}|}{|v_{1i} + v_{2i}|}$
-  \item {\em Earth movers distance}
+  \item {\em Earth movers (Wasserstein-) distance}
   \end{itemize}
 \end{frame}
 
@@ -596,7 +598,7 @@ Example: When spatial arrangement do matter, eg. ``Putin on Obama''.
   \begin{itemize}
   \item Sometimes the logarithm of the fraction above is used
     $$
-    \idf_w = \log \left (\frac{\mbox{Number of documents orimages}}{\mbox{number
+    \idf_w = \log \left (\frac{\mbox{Number of documents or images}}{\mbox{number
         of document in wich w appears}} \right )
     $$
   \item The \textbf{tf-idf} approach reweights the normalized histogram
@@ -609,8 +611,8 @@ Example: When spatial arrangement do matter, eg. ``Putin on Obama''.
       $$
          \text{sim}(d,q) = \text{angle}(v_d,v_q) = \arccos\frac{v_d\cdot v_q}{\|v_d\|\|v_q\|}
       $$
-    \item In practice, the arc cosine is not computed. sim$(d,q)$ is the
-      range [0,1], maximum similarity is 1. 
+    \item In practice, only the argument to the arc cosine may be computed.
+      % sim$(d,q)$ is the range [0,1], maximum similarity is 1. 
   \end{itemize}
 \end{frame}
 
@@ -632,7 +634,7 @@ Example: When spatial arrangement do matter, eg. ``Putin on Obama''.
   \item Tools for searching / ranking -- computing similarity measures.
   \item Bag of Words is also used for object classification and recognition.
   \item Main limitation is that BoW ignores spatial relationships among the words
-  \item Incorporating them is a hot research topic.
+  \item Incorporating them is a research topic.
   \end{itemize}
 \end{frame}
 
@@ -749,7 +751,7 @@ Example: When spatial arrangement do matter, eg. ``Putin on Obama''.
  \frametitle{What error ?}
  \begin{itemize}
    \item Error on training data versus error on test data \\[5mm]
-   \item What is the training error is less than the test error? \\[5mm]
+   \item What if the training error is less than the test error? \\[5mm]
    \item Overfitting is a serious problem.  Often caused by using too
      few training data (or too complicated model) \\[5mm]
    \item We want to generalize in order to retrieve/classify new data
@@ -762,7 +764,7 @@ Example: When spatial arrangement do matter, eg. ``Putin on Obama''.
  \frametitle{Cross-validation}
  \begin{itemize}
    \item Divide data into say 10 sets (10-fold CV) \\[5mm]
-   \item Train on all but one set that is used testing \\[5mm]
+   \item Train on all but one set that is used for testing \\[5mm]
    \item Retrain and test on all possible combinations \\[5mm]
    \item Compute the average test error
  \end{itemize}
@@ -775,7 +777,8 @@ Example: When spatial arrangement do matter, eg. ``Putin on Obama''.
  \begin{itemize}
    \item Amount: 8 pages including everything: 
      Try to be concise, structured etc. Keep text less than 2-3 pages \\[5mm]
-   \item Discussion: This is the most important part \\[5mm]
+   \item Discussion: This is the most important part. Report
+     {\color{blue}{WHY}} you did as you did. \\[5mm]
    \item Tables: Remember to tell me what I should notice \\[5mm]
    \item Figures: Remember axis labels etc.  What should I see? \\[5mm]
    \item Images: Don't show them too small. What should I see? \\[5mm]
