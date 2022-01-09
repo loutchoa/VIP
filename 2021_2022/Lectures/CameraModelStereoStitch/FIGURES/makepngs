@@ -1,0 +1,29 @@
+#!/bin/bash
+
+function fdate {
+    stat --format %X $1
+}
+
+for source in *.svg
+do
+    needMake=0
+    target=${source%.svg}.png
+    if [ -e $target ] 
+    then
+        sdate=$(fdate $source)
+        tdate=$(fdate $target)
+        if [ $sdate -ge $tdate ]
+        then 
+            needMake=1
+        fi
+    else
+        needMake=1
+    fi
+    if [ $needMake = 1 ]
+    then 
+        echo converting $source to $target
+        inkscape -D -e $target $source
+    else
+        echo $target is up-to-date.
+    fi
+done
