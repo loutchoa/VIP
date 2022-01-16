@@ -97,14 +97,14 @@
 
 
 \begin{itemize}
-\item A bit on Training, Annotation, Transfer learning
+\item Training, Annotation, Transfer learning
 % \item What can a neuron compute ?
 % \item FC-net: The Universal approximation Theorem
-\item Number of parameters and overfitting
-\item Regularization
+\item Overfitting
 \item Convolutions
 \item Optimization: Gradient descent, SGD etc
-\item The zoo of network architectures (a start)
+\item The zoo of network architectures
+\item Course evaluation
 \end{itemize}
 \vspace{4mm}
 
@@ -147,7 +147,7 @@ Say that you can annotate an image with on average 10 items
 within one minute.  Say that you for a 2M parameter net need 10 times
 as many training data.  Then you have to work 2M
 minutes or 556 hours or about 14 weeks (40 efficient hours a
-week). Would you like that?
+week). 
 \end{frame}
 
 
@@ -392,19 +392,19 @@ classification of plants.
 
 
 %-------------------------------------------------------------------
-\begin{frame} 
-Correlations/convolutions are used in "`matched filtering"' where we
-search for a maximum response to a fit to the filter.
-
-\begin{center}
-  \includegraphics[width=90mm]{Images/crosscorrelation_Example.png}   
-\end{center}
-
-Conceptually, this is just what we need. \\[2mm]
-
-How many neurons do we need to detect specific objects and what
-happens if we choose too few or too many ?
-\end{frame}
+% \begin{frame} 
+% Correlations/convolutions are used in "`matched filtering"' where we
+% search for a maximum response to a fit to the filter.
+%
+% \begin{center}
+%   \includegraphics[width=90mm]{Images/crosscorrelation_Example.png}   
+% \end{center}
+%
+% Conceptually, this is just what we need. \\[2mm]
+%
+% How many neurons do we need to detect specific objects and what
+% happens if we choose too few or too many ?
+% \end{frame}
 
 
 %-------------------------------------------------------------------
@@ -421,7 +421,7 @@ happens if we choose too few or too many ?
 
 %-------------------------------------------------------------------
 \begin{frame} 
-  \frametitle{Fitting and model selection}
+  \frametitle{Fitting/overfitting and model selection}
   Assume that we want to fit a polynomium (in 1 variable $x$) to $n$
   data points.  What order $d$ of the polynomial should we use, i.e.
   how many parameters
@@ -473,18 +473,18 @@ overfitting.
 
 
 %-------------------------------------------------------------------
-\begin{frame} 
-  \frametitle{Regularization}
-A classical approach to avoid overfitting is to add a regularizing
-term to the objective function penalizing the number of parameters or
-the departure from smoothness (often measured by a sum of gradient
-magnitudes). \\[6mm]
-
-Such approaches are only partially applicable for CNN's, and often
-computationally costly. \\[6mm]
-
-We will later dive deeper into the different regularization methods.
-\end{frame}
+%  \begin{frame} 
+%   \frametitle{Regularization}
+% A classical approach to avoid overfitting is to add a regularizing
+% term to the objective function penalizing the number of parameters or
+% the departure from smoothness (often measured by a sum of gradient
+% magnitudes). \\[6mm]
+%
+% Such approaches are only partially applicable for CNN's, and often
+% computationally costly. \\[6mm]
+%
+% We will later dive deeper into the different regularization methods.
+% \end{frame}
 
 
 %-------------------------------------------------------------------
@@ -557,24 +557,23 @@ We will later dive deeper into the different regularization methods.
 
 
 %-------------------------------------------------------------------
-\begin{frame}
-  \frametitle{Reducing the number of parameters}
-  A fully connected network of $M \times M$ neurons
-  working on an image of $M \times M$ pixels
-  requires $M^2(M^2+1)$ parameters. \\[4mm]
-
-  If only $N \times N$ pixels are contributing to each neuron  we only
-  need $(N^2+1) M^2$ parameters \\[4mm]
-
-  If all neurons perform the same operation (i.e. a convolution) the
-  the number of parameters reduce to $N^2 +1$, a significant reduction
-  and the motivation for CNNs. \\[4mm]
-
-  If $N= 3$ then each convolution requires $10$ parameters.  In
-  practice each input may be a vector with $k$ channels increasing the
-  number of parameters to $10k$.
-  
-\end{frame}
+% \begin{frame}
+%   \frametitle{Reducing the number of parameters}
+%   A fully connected network of $M \times M$ neurons
+%   working on an image of $M \times M$ pixels
+%   requires $M^2(M^2+1)$ parameters. \\[4mm]
+%
+%   If only $N \times N$ pixels are contributing to each neuron  we only
+%   need $(N^2+1) M^2$ parameters \\[4mm]
+%
+%   If all neurons perform the same operation (i.e. a convolution) the
+%   the number of parameters reduce to $N^2 +1$, a significant reduction
+%   and the motivation for CNNs. \\[4mm]
+%
+%   If $N= 3$ then each convolution requires $10$ parameters.  In
+%   practice each input may be a vector with $k$ channels increasing the
+%   number of parameters to $10k$.
+% \end{frame}
 
 
 %-------------------------------------------------------------------
@@ -587,8 +586,7 @@ mathematical expression and then to apply optimization. \\[6mm]
 For CNN-based image classification we obviously want the network to
 produce an output that is consistent with the ground truth.  Mathematically,
 this may be expressed in several ways, e.g. as the summed 2-norm
-differences or as the {\color{red}{cross-entropy}}.
-(more about this later) \\[6mm]
+differences or as the {\color{red}{cross-entropy}}.\\[6mm]
 
 Many different techniques exist to perform optimization.
   
@@ -603,21 +601,23 @@ Many different techniques exist to perform optimization.
   the global minimum. Classical approaches include:
   
 \begin{itemize}
-\item Linear Algebra if the energy landscape is quadratic.
-\item Gradient descent if the energy landscape is convex.
-\item Simulated annealing if energy landscape is not simple.
+\item Linear Algebra if the loss landscape is quadratic.
+\item Gradient descent if the loss landscape is convex.
+\item Simulated annealing if loss landscape is not simple.
 \end{itemize}
 
-Other approaches include:
-\begin{itemize}
-\item Exemplar/prototype coding (as in {\color{blue}{Bag of Words}})
-\item Sparse coding
-\item Stochastic approaches if the data volume is high
-\end{itemize}
+% Other approaches include:
+% \begin{itemize}
+% \item Exemplar/prototype coding (as in {\color{blue}{Bag of Words}})
+% \item Sparse coding
+% \item Stochastic approaches if the data volume is high
+% \end{itemize}
 \bigskip
 
-Optimization of CNNs are almost exclusively done using a variant of
-Gradient descent.
+Optimization of CNNs are almost exclusively done using Gradient
+descent. The gradient may be computed from a single, all, or a batch
+of samples (usually drawn randomly). 
+
 \end{frame}
 
 
@@ -666,18 +666,18 @@ Momentum may accelerate convergence by smoothing out oscillations.
 
 
 %-------------------------------------------------------------------
-\begin{frame} 
-  \frametitle{Autograd}
-{\color{blue}{The pytorch autograd package}} is a system for automatic
-differentiation (gradient computation) for all operations on
-{\color{blue}{tensors}}. A tensor may be seen as a generalization of a
-matrix to 3D. This is the tool for optimizing NNs, but have wider
-application areas. \\[6mm] 
-
-To appreciate Autograd you first need to understand backpropagation.
-However, you may check out {\color{green}{pytorch}} and the use of
-tensors (e.g. Google GettingStarted with PyTorch).
-\end{frame}
+% \begin{frame} 
+%   \frametitle{Autograd}
+% {\color{blue}{The pytorch autograd package}} is a system for automatic
+% differentiation (gradient computation) for all operations on
+% {\color{blue}{tensors}}. A tensor may be seen as a generalization of a
+% matrix to 3D. This is the tool for optimizing NNs, but have wider
+% application areas. \\[6mm] 
+%
+% To appreciate Autograd you first need to understand backpropagation.
+% However, you may check out {\color{green}{pytorch}} and the use of
+% tensors (e.g. Google GettingStarted with PyTorch).
+% \end{frame}
 
 
 %-------------------------------------------------------------------
@@ -761,7 +761,7 @@ diverge.
 
 %-------------------------------------------------------------------
 \begin{frame} 
-  \frametitle{Class exercise (1 minute)}
+  \frametitle{Class exercise (0.5 minute)}
   \vspace{15mm}
   
   \color{blue}{{\Large \bf

@@ -105,7 +105,7 @@
 \begin{frame}
   \frametitle{Today}
   \begin{itemize}
-  \item Please fill out the course evaluation at KUnet.
+%   \item Please fill out the course evaluation at KUnet.
   \item Litterature and Computer Vision history
   \item Neural nets
   \item Convolutional Neural Nets
@@ -129,8 +129,8 @@
     \includegraphics[width=29mm]{Images/DeepLforCV2020.jpg}   
   \end{center}
 
-You will have plenty of references to scientific literature later at
-our meetings.
+Liu et.al: {\em A Survey of Convolutional Neural Networks: Analysis,
+  Applications and Prospects}; 2021.
 \end{frame}
 
 
@@ -398,7 +398,7 @@ often hard to train.
 %-------------------------------------------------------------------
 \begin{frame} 
 \frametitle{Convolutional Neural Nets} 
-To reduce the number of parameters all neurons within the samy layer
+To reduce the number of parameters all neurons within the same layer
 may share the same weights $w_i$. In this case the computation will be
 a {\color{blue}{convolution}}. \\[5mm]
 
@@ -422,9 +422,9 @@ concolutional layer thus is 3.  However, several sub-layers, using the
 same input may produce different output and producing a
 different/larger number of output channels. \\[5mm]
 
-Usually the number of channels increases (often exponentially) up the
-network. This results in a similar increase in the number of
-parameters as we go up the net. \\[5mm]
+Usually the number of channels increases (often exponentially) up
+through the network. This results in a similar increase in the number of
+parameters as we go up through the net. \\[5mm]
 
 It is part of the engineering/design of the network architecture to
 choose a small, but sufficient large number of output
@@ -468,7 +468,7 @@ the channel data.
 
 %-------------------------------------------------------------------
 \begin{frame} 
-\frametitle{Class exercise - 1 minute}
+\frametitle{Class exercise - 0.5 minute}
 \vspace{1cm}
 {\Large What math can be computed by $n$-layers of convolutions
   (without any activation function) ?}   
@@ -513,10 +513,10 @@ sequence of such).
 
 %-------------------------------------------------------------------
 \begin{frame} 
-\frametitle{Class exercise - 1 minute}
+\frametitle{Class exercise - 0.5 minute}
 \vspace{1cm}
 {\Large Why do you think a RELU is a (huge) computational advantage
-  compared to e.g. a sigmoid?}
+  compared to e.g. a sigmoid ( = $\frac{e^x}{1 + e^x}$)  ?}
 \pause
 \bigskip
 
@@ -616,7 +616,8 @@ In object recognition, the last 1-3 layers are {\color{blue}{fully connected (FC
 This part of the netork thus resembles a traditional neural net, and often
 accounts for half the number of parameters (or more). \\[3mm]
 
-Another usefull layer type performs normalization (NORM).  This may be done
+Another usefull layer type performs normalization
+({\color{blue}{NORM}}). This may be done
 in many ways - one is to make sure all channels contribute with equal
 amount to the following layer. \\[3mm]
 
@@ -742,10 +743,10 @@ Recent nets try to simplify and cut down the number of parameters.
 
 %-------------------------------------------------------------------
 \begin{frame} 
-\frametitle{Class exercise - 1 minute}
+\frametitle{Class exercise - 0.5 minute}
 \vspace{1cm}
 {\Large Where in AlexNet (or many other nets) do you think that the
-  major number of parametrs are used ?}   
+  major number of parameters are used ?}   
 
 \end{frame}
 
@@ -1010,6 +1011,7 @@ fast GPU's and days and weeks of training.
   \item Pretraining and transfer learning
   \item A gentle introduction to the zoo of network architecture
   \item A bit on object detection and image segmentation
+  \item Course evaluation
   \end{itemize}
 \end{frame}
 

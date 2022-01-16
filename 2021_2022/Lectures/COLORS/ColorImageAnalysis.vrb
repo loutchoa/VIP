@@ -1,0 +1,17 @@
+\frametitle{Example: Detection of colored object 1}
+If we want to detect a green object, first notice that the color geen
+has a hue value about 0.33 (on a scale from 0 to 1). Thus:
+\begin{verbatim}
+    green = (abs(h - 0.33) < T)
+\end{verbatim}
+where \texttt{T} is a user specified parameter, e.g. 0.15, defining the
+width of acceptable (green) colors.\\[3mm]
+
+In some situations, depending on the white balancing of the camera,
+cloudy white may actually be greenish.  To avoid this we may:
+{\small
+\begin{verbatim}
+    mygreen = (abs(h - 0.33) < T1) & (v < T2) & (s > T3)
+\end{verbatim}
+}
+In this case \texttt {mygreen} will be a saturated green color.

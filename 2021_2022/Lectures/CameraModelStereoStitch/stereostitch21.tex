@@ -90,10 +90,25 @@
   \begin{itemize}
   \item Stereo correspondance analysis
   \item Epipolar line geometry, Fundamental matrix
-  \item Triangulation
+%   \item Triangulation
   \item Coare-to-fine analysis
-  \item Stitching
+  \item Homographies, Stitching
+  \item May be time for questions to assignment 4
   \end{itemize}
+\end{frame}
+
+
+
+% ----------------------------------------------------
+\begin{frame}
+  \frametitle{Course evaluation}
+  {\large
+  The course evaluation at KUNet  starts {\color{red}{today}}. \\[6mm]
+
+  Please fill out the questionnaire and give os feedback \\[6mm]
+
+  The evaluation runs for one week, but better {\color{red}{answer today}}
+  }
 \end{frame}
 
 
@@ -363,7 +378,8 @@ gradient larger than 1.
   \begin{itemize}
   \item Pixelwise intensity comparison does not work. Areas, say 
     $7 \times 7$, or $13 \times 13$ are used. Larger windows implies
-    better robustness, less precision and larger vulnerability to occlusions.
+    better robustness, less precision, larger vulnerability to
+    occlusions and to projection skewness.    
   \item All R-windows centered and displaced along the epipolar line
     are compared to the L-window centered at the point in question and
     the best is chosen.
@@ -400,15 +416,17 @@ square integral) is defined by:
         f^{\star}(\alpha) g(x \;+\; \alpha) d\alpha
 \end{displaymath}
  
-Discrete normalised 2D cross correlation is defined by:
+Discrete {\color{blue}{normalised}} 2D cross correlation is defined by:
 \begin{displaymath}
-  \frac{1}{n} \sum_{(x,y) \in \Omega}
-  \frac{(f(x,y) - \bar{f}) \cdot  (g(x + \alpha,y + \beta) - \bar{g})}
+  h(x,y) \;=\;
+  \frac{1}{n} \sum_{(\alpha,\beta) \in \Omega}
+  \frac{(f(\alpha,\beta) - \bar{f}) \cdot  (g(x + \alpha,y + \beta) - \bar{g})}
     {\sigma_f \sigma_g}
 \end{displaymath}
-where $n$ is the number of pixels in $\Omega$, $\bar{f}$ is the mean
-value of $f$ in $\Omega$, $\sigma_f$ is the standard deviation of $f$
-within $\Omega$ (and similarly for $g$).
+where $n$ is the number of pixels in $\Omega$, $(x,y)$ is the
+displacement/disparity/motion, $\bar{f}$ is the mean value of $f$ in
+$\Omega$, $\sigma_f$ is the standard deviation of $f$ within $\Omega$
+(and similarly for $g$). 
 \medskip
 
 Cross-correlation is used in {\color{red}{Template matching}}
@@ -438,22 +456,6 @@ $(f \circ g)(x,y)$.
 %    \includegraphics[width=4.8cm]{FIGURES/corrresult.eps} 
 % \end{tabular}
 % \end{frame}
-
-
-
-%----------------------------------------------
-\begin{frame}
- \frametitle{3-Camera stereo}
-
-The use of 3 cameras in stereo vision, and assuming all fundamental
-matrices known, makes the correspondence analysis more easy and
-robust. 
-
-\begin{center}
-      \includegraphics[width=0.6\textwidth]{FIGURES/kamera3.jpg}
-\end{center}
-
-\end{frame}
 
 
 
@@ -496,7 +498,7 @@ Pyramid-based coarse to fine approaches:
   \item reduce the time complexity from $\mathcal{O}(N)$ to
     $\mathcal{O}(\log(N))$.  \\[3mm]
   \item reduce the complexity of the correspondence problem with a
-    large factor (see previous slide). \\[3mm]
+    large factor. \\[3mm]
   \item Facilitates global operations using only local computations \\[3mm]
 \end{itemize}
 \bigskip
@@ -620,6 +622,23 @@ The images in this and the next slides are from Scharstein, Szeliski:
 
 %----------------------------------------------
 \begin{frame}
+ \frametitle{3-Camera stereo}
+
+The use of 3 cameras in stereo vision, and assuming all fundamental
+matrices known, makes the correspondence analysis more easy and
+robust. 
+
+\begin{center}
+      \includegraphics[width=0.6\textwidth]{FIGURES/kamera3.jpg}
+\end{center}
+
+\end{frame}
+
+
+
+
+%----------------------------------------------
+\begin{frame}
   \frametitle{Epipolar Constraints}
   \begin{center}
     \includegraphics[width=0.9\textwidth]{FIGURES/epigeom}
@@ -660,20 +679,20 @@ The images in this and the next slides are from Scharstein, Szeliski:
 
 
 %----------------------------------------------
-\begin{frame}
-  \frametitle{Epipolar Constraints}
-  \begin{center}
-    \includegraphics[width=0.9\textwidth]{FIGURES/epigeom}
-  \end{center}
-  \begin{itemize}
-  \item  Line connecting $O$ and $O'$: \myemph{baseline}
-  \item Plane through baseline and $x$ or $x'$: \myemph{Epipolar Plane}
-  \item Epipoles: intersection of baseline and image planes:
-    projection of the other camera center.
-  \item Epipolar Lines - intersections of epipolar plane with image
-    planes (always come in corresponding pairs)
-  \end{itemize}  
-\end{frame}
+% \begin{frame}
+%   \frametitle{Epipolar Constraints}
+%   \begin{center}
+%     \includegraphics[width=0.9\textwidth]{FIGURES/epigeom}
+%   \end{center}
+%   \begin{itemize}
+%  \item  Line connecting $O$ and $O'$: \myemph{baseline}
+%  \item Plane through baseline and $x$ or $x'$: \myemph{Epipolar Plane}
+%  \item Epipoles: intersection of baseline and image planes:
+%    projection of the other camera center.
+%  \item Epipolar Lines - intersections of epipolar plane with image
+%    planes (always come in corresponding pairs)
+%  \end{itemize}  
+% \end{frame}
 
 
 
@@ -760,13 +779,13 @@ The images in this and the next slides are from Scharstein, Szeliski:
        practice a non-linear post- non-linear optimisation is needed. \\[4mm]
       \item Given $F$, the stereo correspondence problem is reduced
         to a one-dimensional search along the epipolar lines. \\[4mm]
-      \item Given $F$, and the internal camera parmeters$K$ and $K'$,
+      \item Given $F$, and the internal camera parmeters $K$ and $K'$,
         then the reconstructions of 3D points is possible (using
         linear algebra) from image point correspondences.
       \end{itemize}
       \bigskip
 
-      If you want to know more, you must take the ATIA-course.
+      % If you want to know more, you must take the ATIA-course.
 \end{frame}
 
 
@@ -927,110 +946,110 @@ we finally get:\\[3mm]
 
 
 % ----------------------------------------------------
- \begin{frame}
-   \frametitle{Remember the Camera Matrix}
-   \begin{itemize}
-%   \item Combine world vs camera coordinates with
-   \item Camera calibration matrix, now extended with
-     Image plane transformation (axis scalings, shear, translation)
-     $$
-     {\bf C} = {\bf K} \left[{\bf  R}\,\, {\bf t}\right]
-     $$
-   \item ${\bf K}$$3\times 3$ matrix encoding the homogeneous transformations
-     inside the camera. ${\bf K}$ specifies the \myemph{Intrinsic parameters}.
-   \item $\left[{\bf R}\,\, {\bf t}\right]$ Concatenation of world
-     coordinates rotation and origin translation to align camera and
-     world coordinates.
-   \end{itemize}
-   $$
-   \begin{bmatrix}
-     x \\y \\1
-   \end{bmatrix}
-   =   \begin{bmatrix}
-     w x \\w y \\w 
-   \end{bmatrix}
-   =\udesc{{\bf K}}{
-     \begin{pmatrix}
-       f_x & s & u_0\\
-       0 & f_y & v_0\\
-       0 & 0 & 1
-     \end{pmatrix}}
-   \udesc{\left[{\bf R}\,\, {\bf t}\right]}{
-     \begin{pmatrix}
-       r_{11} & r_{12} & r_{13} & t_x\\
-       r_{21} & r_{22} & r_{23} & t_y\\
-       r_{31} & r_{32} & r_{33} & t_z\\
-     \end{pmatrix}}
-   \begin{pmatrix}
-     X\\Y\\Z\\1
-   \end{pmatrix}
-   $$
- \end{frame}
+% \begin{frame}
+%   \frametitle{Remember the Camera Matrix}
+%   \begin{itemize}
+%%   \item Combine world vs camera coordinates with
+%   \item Camera calibration matrix, now extended with
+%     Image plane transformation (axis scalings, shear, translation)
+%     $$
+%     {\bf C} = {\bf K} \left[{\bf  R}\,\, {\bf t}\right]
+%     $$
+%   \item ${\bf K}$$3\times 3$ matrix encoding the homogeneous transformations
+%     inside the camera. ${\bf K}$ specifies the \myemph{Intrinsic parameters}.
+%   \item $\left[{\bf R}\,\, {\bf t}\right]$ Concatenation of world
+%     coordinates rotation and origin translation to align camera and
+%     world coordinates.
+%   \end{itemize}
+%   $$
+%   \begin{bmatrix}
+%     x \\y \\1
+%   \end{bmatrix}
+%   =   \begin{bmatrix}
+%     w x \\w y \\w 
+%   \end{bmatrix}
+%   =\udesc{{\bf K}}{
+%     \begin{pmatrix}
+%       f_x & s & u_0\\
+%       0 & f_y & v_0\\
+%       0 & 0 & 1
+%     \end{pmatrix}}
+%   \udesc{\left[{\bf R}\,\, {\bf t}\right]}{
+%     \begin{pmatrix}
+%       r_{11} & r_{12} & r_{13} & t_x\\
+%       r_{21} & r_{22} & r_{23} & t_y\\
+%       r_{31} & r_{32} & r_{33} & t_z\\
+%     \end{pmatrix}}
+%   \begin{pmatrix}
+%     X\\Y\\Z\\1
+%   \end{pmatrix}
+%   $$
+% \end{frame}
 
 
  
 %----------------------------------------------
-\begin{frame}
-\frametitle{Given {\bf M}, how can we triangulate ?}
-Let ${\bf m}^i$ be the $i$'th row of the camera matrix and
-$U = (X, Y, Z, 1)^{\top}$. Then:
-
-\begin{displaymath}
-   w
-   \begin{bmatrix}
-     x\\y\\1
-   \end{bmatrix}
-   =
-     \begin{pmatrix}
-       {\bf m}^1 \\
-       {\bf m}^2 \\
-       {\bf m}^3 \\
-     \end{pmatrix}
-   \begin{pmatrix}
-     X\\Y\\Z\\1
-   \end{pmatrix}
-   =
-     \begin{pmatrix}
-       {\bf m}^1 U \\
-       {\bf m}^2 U \\
-       {\bf m}^3 U \\
-     \end{pmatrix}
-\end{displaymath}
-
-We will later se how we may estimate the parameters of the camera
-matrix and use this to compute 3D structure (depth) from point
-correspondences. 
-\end{frame}
+% \begin{frame}
+%\frametitle{Given {\bf M}, how can we triangulate ?}
+% Let ${\bf m}^i$ be the $i$'th row of the camera matrix and
+% $U = (X, Y, Z, 1)^{\top}$. Then:
+%
+% \begin{displaymath}
+%   w
+%   \begin{bmatrix}
+%     x\\y\\1
+%   \end{bmatrix}
+%   =
+%     \begin{pmatrix}
+%       {\bf m}^1 \\
+%       {\bf m}^2 \\
+%       {\bf m}^3 \\
+%     \end{pmatrix}
+%   \begin{pmatrix}
+%     X\\Y\\Z\\1
+%   \end{pmatrix}
+%   =
+%     \begin{pmatrix}
+%       {\bf m}^1 U \\
+%       {\bf m}^2 U \\
+%       {\bf m}^3 U \\
+%     \end{pmatrix}
+% \end{displaymath}
+%
+% We will later se how we may estimate the parameters of the camera
+% matrix and use this to compute 3D structure (depth) from point
+% correspondences. 
+% \end{frame}
 
 
 %----------------------------------------------
-\begin{frame}
-\frametitle{Linear triangulation for 2 calibrated cameras}
-Let $U = (X, Y, Z, 1)^{\top}$.  For the first coordinate in the left camera we have:
-\begin{displaymath}
- x^L  = \frac{{\bf m}_L^1U}{{\bf m}_L^3U}
-\end{displaymath}
-and similar for the $y$-coordinate and the right camera.  Multiplying
-by the denominator we get:
-\begin{eqnarray*}
-   {\bf m}_L^3 x_L  U & = & {\bf m}_L^1 U \\
-   {\bf m}_L^3 y_L  U & = & {\bf m}_L^2 U \\
-   {\bf m}_R^3 x_R U & = & {\bf m}_R^1 U \\
-   {\bf m}_R^3 y_R U & = & {\bf m}_R^2 U 
-\end{eqnarray*}
-Subtracting the right side and putting $U$ outside a parentesis we get
-the homogeneous equation $A U = 0$, where:
-\begin{displaymath}
-  A  = \left (
-    \begin{array}{c}
-   {\bf m}_L^3 x_L   - {\bf m}_L^1 \\
-   {\bf m}_L^3 y_L   - {\bf m}_L^2 \\
-   {\bf m}_R^3 x_R  - {\bf m}_R^1 \\
-   {\bf m}_R^3 y_R  - {\bf m}_R^2 
-      \end{array}
-    \right )
-\end{displaymath}
-\end{frame}
+% \begin{frame}
+% \frametitle{Linear triangulation for 2 calibrated cameras}
+% Let $U = (X, Y, Z, 1)^{\top}$.  For the first coordinate in the left camera we have:
+% \begin{displaymath}
+%  x^L  = \frac{{\bf m}_L^1U}{{\bf m}_L^3U}
+% \end{displaymath}
+% and similar for the $y$-coordinate and the right camera.  Multiplying
+% by the denominator we get:
+% \begin{eqnarray*}
+%    {\bf m}_L^3 x_L  U & = & {\bf m}_L^1 U \\
+%    {\bf m}_L^3 y_L  U & = & {\bf m}_L^2 U \\
+%    {\bf m}_R^3 x_R U & = & {\bf m}_R^1 U \\
+%    {\bf m}_R^3 y_R U & = & {\bf m}_R^2 U 
+% \end{eqnarray*}
+% Subtracting the right side and putting $U$ outside a parentesis we get
+% the homogeneous equation $A U = 0$, where:
+% \begin{displaymath}
+%  A  = \left (
+%    \begin{array}{c}
+%   {\bf m}_L^3 x_L   - {\bf m}_L^1 \\
+%   {\bf m}_L^3 y_L   - {\bf m}_L^2 \\
+%   {\bf m}_R^3 x_R  - {\bf m}_R^1 \\
+%   {\bf m}_R^3 y_R  - {\bf m}_R^2 
+%      \end{array}
+%    \right )
+% \end{displaymath}
+% \end{frame}
 
 
 
@@ -1113,7 +1132,7 @@ surface is planar.  Obviously this often is not the case.
   \frametitle{Homographies}
   An homography can accurately describe the stitching of images of a
   planar scene.  Non-planar scenes cannot be stitched correctly using
-  homographies. 
+  a single homography. 
 
   \begin{center}
     \includegraphics[width=0.85\textwidth]{IMAGES/soccer_homography.png}
@@ -1289,7 +1308,9 @@ matrix $V$ in a SVD-decomposition $A = U D V^{\top}$ of $A$, where:  \\[3mm]
 %-------------------------------------------------------------------
 \begin{frame}
   \begin{center}
-    {\color{blue}{\Huge QUESTIONS ?}}
+    {\color{blue}{\Huge QUESTIONS ?}} \\[12mm]
+    \pause
+    {\color{blue}{\huge questions to assignment 4 ?}}
   \end{center}
  \end{frame}
 
@@ -1297,11 +1318,11 @@ matrix $V$ in a SVD-decomposition $A = U D V^{\top}$ of $A$, where:  \\[3mm]
 
 
 %----------------------------------------------
-\begin{frame}
-  \begin{center}
-    \includegraphics[width=\textwidth]{IMAGES/tired}
- \end{center}
-\end{frame}
+% \begin{frame}
+%  \begin{center}
+%    \includegraphics[width=\textwidth]{IMAGES/tired}
+% \end{center}
+% \end{frame}
 
 
 

@@ -76,16 +76,16 @@
 %   Start slides
 %-------------------------------------------------------------------
 
-% \begin{frame}
-% \frametitle{Course evaluation}
-% {\Large
-% {\color{blue}{The course evaluation is open until Januar 13}}
-% \\[5mm]
-% 
-% Please fill out the course evaluation.  \\[4mm]
-% {\color{red}{It does matter !!!}}
-% }
-% \end{frame}
+\begin{frame}
+\frametitle{Course evaluation}
+{\Large
+  {\color{blue}{The course evaluation is open until Januar 16}}
+  \\[5mm]
+ 
+Please fill out the course evaluation.  \\[4mm]
+{\color{red}{It does matter !!!}}
+}
+\end{frame}
 
 
 %-------------------------------------------------------------------
@@ -207,7 +207,7 @@ uniquely in a linear vector space.
     is only a subset. \\[2mm]
 
     The triangle illustrates the gamut for a monitor. Colors outside
-    the triangle cannot be show.
+    the triangle cannot be shown.
   \end{minipage}
   &
   \begin{minipage}[t]{60mm}
@@ -314,7 +314,7 @@ $$
 \item $(r,g,b)$ = $(R/I, G/I, B/I) \;\;$ are called {\color{red} the 
           trichromatic coefficients}.  $I = R+G+B$ is called the 
         {\em Intensity}. Notice: $b = 1 - r - g$. 
-\item A lot of other color coordinate systems exist:
+\item A lot of other color coordinate systems exist:\\
           CMY = (1-r, 1-g, 1-b) are (together with black K) used in
           printers. 
 \item For broadcast and video  {\color{red} YIQ} (in America) and
@@ -394,7 +394,7 @@ $ Y = 0.299 R + 0.587 G + 0.114 B$.  All 3 transforms are linear:\\[3mm]
 %-------------------------------------------------------------------
 \begin{frame} 
 \frametitle{RGB2HSV}
-Lad
+Let
 \begin{displaymath}
  \theta \;=\; \tan^{-1} \left \{
      \frac{(R - G) + (R - B)}
@@ -448,7 +448,7 @@ has a hue value about 0.33 (on a scale from 0 to 1). Thus:
 \begin{verbatim}
     green = (abs(h - 0.33) < T)
 \end{verbatim}
-where \texttt{T} is a user specified parameter, e.g.0.15, defining the
+where \texttt{T} is a user specified parameter, e.g. 0.15, defining the
 width of acceptable (green) colors.\\[3mm]
 
 In some situations, depending on the white balancing of the camera,
@@ -660,7 +660,7 @@ Method and images from {\em Finlayson, Drew, lu: Entropy Minimization
 \item Remove the shadow edges by nulling the gradient information
   in a band along the shadow edges.
 \item Reintegrate the gradient information and add mean color to get an
-  images without shadows.
+  image without shadows.
 \end{enumerate}
 \bigskip
 
@@ -681,7 +681,7 @@ shadow edges will not exist.
 \frametitle{Simplification}
 Remember relation between temperature of black body and emitted energy:
 \begin{displaymath}
-  E(\lambda) \;=\; \frac{1}{\lambda^5} \;
+  E(\lambda) \;=\; C \frac{1}{\lambda^5} \;
         \frac{1}{e^{hc / k \lambda T} -1}
 \end{displaymath}
 You may look op the values for $c$, $k$ and $h$ and notice typical

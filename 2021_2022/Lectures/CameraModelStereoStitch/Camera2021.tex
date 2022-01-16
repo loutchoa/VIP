@@ -90,13 +90,14 @@
   \begin{itemize}
   \item Introduction to Camera Models, specifically the pinhole model
      and the perspective transformation \\[3mm]
-%   \item Vanishing points and vanishing lines \\[3mm]
+  \item Vanishing points and vanishing lines \\[3mm]
   \item Homogeneous coordinates,  Homographies \\[3mm]
-  \item Camera matrices and parameters
+  \item Camera matrices and parameters \\[3mm]
 %  \item Midway evaluation
-  \item Camera calibration
+  \item Camera calibration \\[3mm]
+  \item Triangulation \\[3mm]
 %  \item Epipolar line geometry, stereo
-%   \item Assignment 4
+   \item Questions for ssignment 4
   \end{itemize}
 \end{frame}
 
@@ -316,23 +317,23 @@
 
 
 % ----------------------------------------------------
- \begin{frame}
-   \frametitle{Lost in projection}
-     \begin{center}
-     \includegraphics[width=0.8\textwidth]{IMAGES/trocadero_annotations}
-   \end{center}
-   Depth, Angles, size, parallelism.
- \end{frame}
+% \begin{frame}
+%   \frametitle{Lost in projection}
+%     \begin{center}
+%     \includegraphics[width=0.8\textwidth]{IMAGES/trocadero_annotations}
+%   \end{center}
+%   Depth, Angles, size, parallelism.
+% \end{frame}
 
 
 % ----------------------------------------------------
- \begin{frame}
-   \frametitle{Preserved by projection}
-     \begin{center}
-     \includegraphics[width=0.8\textwidth]{IMAGES/trocadero_annotations}
-   \end{center}
-   Straight lines, connectivity, neighborhood.
- \end{frame}
+% \begin{frame}
+%   \frametitle{Preserved by projection}
+%     \begin{center}
+%     \includegraphics[width=0.8\textwidth]{IMAGES/trocadero_annotations}
+%   \end{center}
+%    Straight lines, connectivity, neighborhood.
+% \end{frame}
 
 
 % ----------------------------------------------------
@@ -1019,12 +1020,82 @@ Notice that $||x|| = 1$
 
 
 
-%-------------------------------------------------------------------
+% -----------------
+%  Triangulation
+%  -----------------
+
+
+%----------------------------------------------
 \begin{frame}
+  \frametitle{Simple depth recovery}
   \begin{center}
-    {\color{blue}{\Huge QUESTIONS ?}}
+    \includegraphics[width=0.9\textwidth]{FIGURES/stereo}
   \end{center}
- \end{frame}
+  If we can recover $x'$ from $x$ we can recover depth: $z = - \frac{fB}{x'-x}$.
+\end{frame}
+
+
+%----------------------------------------------
+\begin{frame}
+\frametitle{Linear triangulation for 2 calibrated cameras}
+Let $U = (X, Y, Z, 1)^{\top}$.  For the first coordinate in the left camera we have:
+\begin{displaymath}
+ x^L  = \frac{{\bf m}_L^1U}{{\bf m}_L^3U}
+\end{displaymath}
+and similar for the $y$-coordinate and the right camera.  Multiplying
+by the denominator we get:
+\begin{eqnarray*}
+   {\bf m}_L^3 x_L  U & = & {\bf m}_L^1 U \\
+   {\bf m}_L^3 y_L  U & = & {\bf m}_L^2 U \\
+   {\bf m}_R^3 x_R U & = & {\bf m}_R^1 U \\
+   {\bf m}_R^3 y_R U & = & {\bf m}_R^2 U 
+\end{eqnarray*}
+Subtracting the right side and putting $U$ outside a parentesis we get
+the homogeneous equation $A U = 0$, where:
+\begin{displaymath}
+  A  = \left (
+    \begin{array}{c}
+   {\bf m}_L^3 x_L   - {\bf m}_L^1 \\
+   {\bf m}_L^3 y_L   - {\bf m}_L^2 \\
+   {\bf m}_R^3 x_R  - {\bf m}_R^1 \\
+   {\bf m}_R^3 y_R  - {\bf m}_R^2 
+      \end{array}
+    \right )
+\end{displaymath}
+\end{frame}
+
+
+
+
+
+%----------------------------------------------
+\begin{frame}
+\frametitle{More triangulation}
+\begin{itemize}
+\item If the calibration matrices  ${\bf M}_{L/R}$ is not available, a
+  projective reconstruction still is possible. This will be relative
+  to say the left camera and valid up to a projective transformation only.
+\item Notice that the dertived triangulation is for points. No
+  concepts of surfaces etc. is imposed. Analysis of the derived  point
+  cloud data is a topic in itself.
+\item Remember that no (true) reconstructions are possible for
+  partially occluded areas (often related to surface discontinuities).
+\item There is no evidence that humans do triangulations. Stereo
+  analysis is a significant 3D inforrmation source, but seem to be
+  based on disparity information alone.
+\end{itemize}
+\end{frame}
+
+
+
+
+
+%-------------------------------------------------------------------
+% \begin{frame}
+%   \begin{center}
+%    {\color{blue}{\Huge QUESTIONS ?}}
+%  \end{center}
+% \end{frame}
 
 
 
@@ -1122,11 +1193,13 @@ Notice that $||x|| = 1$
 
 
 %-------------------------------------------------------------------
-% \begin{frame}
-%  \begin{center}
-%    {\color{blue}{\Huge QUESTIONS ?}}
-%  \end{center}
-%  \end{frame}
+ \begin{frame}
+   \begin{center}
+     {\color{blue}{\huge QUESTIONS ?}} \\[8mm]
+     \pause
+     {\color{blue}{\huge QUESTIONS to assignment 4 ?}}
+  \end{center}
+  \end{frame}
 
 
 
