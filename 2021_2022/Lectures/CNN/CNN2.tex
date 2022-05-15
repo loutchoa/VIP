@@ -143,11 +143,14 @@ annotation (e.g. marking bounding boxes and writing class label) may
 take more time than the actual training. \\[4mm]
 
 
-Say that you can annotate an image with on average 10 items 
-within one minute.  Say that you for a 2M parameter net need 10 times
-as many training data.  Then you have to work 2M
-minutes or 556 hours or about 14 weeks (40 efficient hours a
-week). 
+Say that you can annotate an image
+% with on average 10 items 
+within one minute.  Say that you
+%for a 2M parameter net need 10 times as many training data.
+have to annotate 1M images.
+Then you have to work for about 278 hours or 7 
+% minutes or 556 hours or about 14
+weeks (40 efficient hours a week). 
 \end{frame}
 
 
@@ -739,9 +742,9 @@ For an initial high learning rate, the movent in the energy landscape
 is large, probably bypassing the global minimum. Lowering the learning
 rate ensures that the locally deepest minimum is found. \\[3mm]
 
-Usually the choice of optimizer does not change the result (the
-minimum). Instead one optimizer may work/converge where another will
-diverge.  
+Usually the choice of optimizer does not change the result  (the
+minimum) significantly. However, one optimizer may work/converge where 
+another will diverge.  
 
 \end{frame}
 
